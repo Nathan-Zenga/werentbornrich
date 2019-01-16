@@ -1,0 +1,57 @@
+<% include partials/header.ejs %>
+
+<section class="homescreen index">
+	<div class="logo" id="main-logo">
+		<img src="/img/logo1.jpeg">
+	</div>
+	<nav>
+		<div class="mb-view menu" id="menu">Menu</div>
+		<div class="link-group">
+			<div class="mb-view close-menu">&times;</div>
+			<div class="col-sm-4" id="products">Products</div>
+			<div class="col-sm-4" id="bio">Our Story</div>
+			<div class="col-sm-4" id="contact">Contact</div>
+		</div>
+	</nav>
+
+	<div class="row section-main filter"></div>
+	<div class="row section-footer">
+		<div class="col-xs-8 slogan">
+			<h1 class="font-2">&#0147;STAY RICH&#0148;</h1>
+			<div class="socials">
+				<i class="fab fa-symbol fa-instagram"></i>
+			</div>
+			<div class="dt-view footer-info-container">
+				&copy; WERENTBORNRICH <%= new Date().getFullYear() %>
+			</div>
+		</div>
+		<div class="col-xs-4 mini-slideshow">
+			<div id="bgreel">
+				<div class="filter" style="background-image: url('https://assets.bigcartel.com/theme_images/43824467/PHOTO-2018-08-15-14-23-50.jpg?auto=format&fit=max&w=1400');"></div>
+				<div class="filter" style="background-image: url('https://assets.bigcartel.com/theme_images/43824488/PHOTO-2018-08-25-00-48-59.jpg?auto=format&fit=max&w=1400');"></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="clothing">
+	<div class="category" id="tshirts">
+		<div class="heading"></div>
+		<div class="thumbs-container">
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4"></div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4"></div>
+			</div>
+			<div class="row for-carousel mb-view">
+			</div>
+		</div>
+	</div>
+</section>
+
+<% include partials/footer.ejs %>
