@@ -6,7 +6,6 @@ html, body {
 	color: black;
 	font-family: 'Questrial', 'Overpass Mono', sans-serif;
 	font-feature-settings: "liga" 0;
-	overflow-x: hidden;
 }
 
 .font-2 {
@@ -33,7 +32,7 @@ a, a:link, a:visited, a:hover {
 }
 
 a:hover {
-	color: white;
+	opacity: .5;
 }
 
 .row {

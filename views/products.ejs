@@ -1,0 +1,30 @@
+<% include partials/header.ejs %>
+
+<section class="products">
+	<div class="heading">
+		<div class="category-title">T-Shirts</div>
+	</div>
+	<div class="category" id="tshirts">
+		<div class="thumbs-container">
+
+			<%_ clothingSection.forEach(row => { _%>
+				<div class="row">
+				<%_ row.forEach(thumb => { _%>
+					<div class="thumb col-sm-4" style="display: none">
+						<div class="inner-thumb">
+							<div class="img" style="background-image: url('<%= thumb.imgSrc %>');"></div>
+							<div class="details">
+								<div class="row product-name"><%= thumb.productName %></div>
+								<div class="row product-price">£<%= thumb.price %></div>
+							</div>
+						</div>
+					</div>
+				<%_ }) _%>
+				</div>
+			<%_ }) _%>
+
+		</div>
+	</div>
+</section>
+
+<% include partials/footer.ejs %>

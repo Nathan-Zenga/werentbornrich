@@ -1,54 +1,49 @@
 <% include partials/header.ejs %>
 
 <section class="homescreen index">
-	<div class="logo" id="main-logo">
-		<img src="/img/logo1.jpeg">
-	</div>
-	<nav>
-		<div class="mb-view menu" id="menu">Menu</div>
-		<div class="link-group">
-			<div class="mb-view close-menu">&times;</div>
-			<div class="col-sm-4" id="products">Products</div>
-			<div class="col-sm-4" id="bio">Our Story</div>
-			<div class="col-sm-4" id="contact">Contact</div>
+	<div class="strip">
+		<div class="column col-sm-6 info-container">
+			<div class="products-options grid menu dt-view">
+				<div class="row mb-view close-menu">&times;</div>
+				<div class="row">
+					<div class="thumb col-sm-6">
+						<a href="/products/tracksuits" class="thumb-link" style="background-image: url('https://assets.bigcartel.com/product_images/224255989/7DF164A1-EEA7-47AE-AAE2-9ED650D80BB7.jpeg?auto=format&fit=max&w=900');">
+							<p>Tracksuits / Joggers</p>
+						</a>
+					</div>
+					<div class="thumb col-sm-6">
+						<a href="/products/t-shirts" class="thumb-link" style="background-image: url('https://assets.bigcartel.com/product_images/224256073/3AA09521-E79A-4ACC-B38C-79FADCEE4F61.jpeg?auto=format&fit=max&w=900');">
+							<p>T-Shirts</p>
+						</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="thumb col-sm-4">
+						<a href="/products/jumpers" class="thumb-link" style="background-image: url('https://assets.bigcartel.com/product_images/224256457/4CBA9CE3-CE56-4ACC-97E0-64E56C58E4FB.jpeg?auto=format&fit=max&w=900');">
+							<p>Jumpers</p>
+						</a>
+					</div>
+					<div class="thumb col-sm-4">
+						<a href="/products/hats" class="thumb-link" style="background-image: url('https://assets.bigcartel.com/product_images/222868936/product_image.jpg?auto=format&fit=max&w=900');">
+							<p>Hats</p>
+						</a>
+					</div>
+					<div class="thumb col-sm-4">
+						<a href="/products/shorts" class="thumb-link" style="background-image: url('https://assets.bigcartel.com/product_images/221612857/IMG_9421.JPG?auto=format&fit=max&w=900');">
+							<p>Shorts</p>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
-	</nav>
 
-	<div class="row section-main filter"></div>
-	<div class="row section-footer">
-		<div class="col-xs-8 slogan">
-			<h1 class="font-2">&#0147;STAY RICH&#0148;</h1>
-			<div class="socials">
-				<i class="fab fa-symbol fa-instagram"></i>
-			</div>
-			<div class="dt-view footer-info-container">
-				&copy; WERENTBORNRICH <%= new Date().getFullYear() %>
-			</div>
-		</div>
-		<div class="col-xs-4 mini-slideshow">
-			<div id="bgreel">
-				<div class="filter" style="background-image: url('https://assets.bigcartel.com/theme_images/43824467/PHOTO-2018-08-15-14-23-50.jpg?auto=format&fit=max&w=1400');"></div>
-				<div class="filter" style="background-image: url('https://assets.bigcartel.com/theme_images/43824488/PHOTO-2018-08-25-00-48-59.jpg?auto=format&fit=max&w=1400');"></div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="clothing">
-	<div class="category" id="tshirts">
-		<div class="heading"></div>
-		<div class="thumbs-container">
-			<div class="row">
-				<div class="col-sm-4"></div>
-				<div class="col-sm-4"></div>
-				<div class="col-sm-4"></div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4"></div>
-				<div class="col-sm-4"></div>
-				<div class="col-sm-4"></div>
-			</div>
-			<div class="row for-carousel mb-view">
+		<div class="column col-sm-6 img-container">
+			<div class="main-img">
+				<div class="slideshow" id="index-reel">
+					<div class="filter" style="background-image: url('https://assets.bigcartel.com/theme_images/43824467/PHOTO-2018-08-15-14-23-50.jpg?auto=format&fit=max&w=1400');"></div>
+					<div class="filter" style="background-image: url('https://assets.bigcartel.com/theme_images/43824458/PHOTO-2018-09-09-12-07-59.jpg?auto=format&fit=max&w=1400');"></div>
+					<div class="filter" style="background-image: url('https://assets.bigcartel.com/theme_images/43824488/PHOTO-2018-08-25-00-48-59.jpg?auto=format&fit=max&w=1400');"></div>
+				</div>
 			</div>
 		</div>
 	</div>
