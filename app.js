@@ -5,17 +5,7 @@ var express = require('express'),
 	http = require('http'), // core module
 	path = require('path'), // core module
 	session = require('express-session'),
-	mongoose = require('mongoose'),
-	ejs = require('ejs'),
-	s3 = null;
-
-require('dotenv').config();
-
-// let conn = mongoose.connection;
-// mongoose.connect(s3 ? s3.DB : process.env.DB);
-
-// conn.once('open', () => { console.log('Connected to db'); });
-// conn.on('error', (err) => { console.log(err); });
+	ejs = require('ejs');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -40,6 +30,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', require('./routes/index'));
+app.use('/shopify', require('./routes/shopify'));
 
 const port = process.env.PORT;
 app.listen(port, function() {
