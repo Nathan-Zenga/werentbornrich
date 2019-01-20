@@ -1,30 +1,28 @@
-<% include partials/header.ejs %>
+<%_ include partials/header.ejs _%>
 
-<section class="products">
+<section class="our-story">
 	<div class="heading">
-		<div class="category-title">Our Story</div>
+		<div class="title">Our Story</div>
 	</div>
-	<div class="category" id="tshirts">
-		<div class="thumbs-container">
+	<div class="inner-body">
+		<div class="col-sm-6 column">
+			<p>The journey of Weren’t Born Rich (WBR) started in February 2016 by one of our founders <strong>Nabila Nakigozi</strong>, a then 15-year-old school girl with Sickle Cell Anaemia.</p>
 
-			<%_ clothingSection.forEach(row => { _%>
-				<div class="row">
-				<%_ row.forEach(thumb => { _%>
-					<div class="thumb col-sm-4" style="display: none">
-						<div class="inner-thumb">
-							<div class="img" style="background-image: url('<%= thumb.imgSrc %>');"></div>
-							<div class="details">
-								<div class="row product-name"><%= thumb.productName %></div>
-								<div class="row product-price">£<%= thumb.price %></div>
-							</div>
-						</div>
-					</div>
-				<%_ }) _%>
-				</div>
-			<%_ }) _%>
+			<p>After having witnessed that in both Kampala and London, many talented youths weren’t given the opportunity or empowerment to pursue their dreams and like her circumstances weren’t in their favour, they weren’t born rich i.e., in health, environment, happiness, opportunities, family and friends.</p>
 
+			<p>The inspiration to start a brand with a strong message stemmed from these personal experiences after not growing up with much in Uganda and living in one of poorest boroughs in London.</p>
+
+			<p>Despite all difficulties it is important to channel any negative energy into something positive that could change our situation and still inspire others, show that no matter what hardships you face you can overcome them and be anything you want.</p>
+		</div>
+		<div class="col-sm-6 column">
+			<p>WBR is more than just a clothing brand; it is a movement and motivational platform especially for the younger generation that has the potential to take the world by storm.</p>
+
+			<p>Fashion relates to everyone, it is a way of expression so we aim to send our message across the world through it. With our keen attention to detail we at WBR aim to provide our customers with quality merchandise to maximise comfort and confidence to help each individual feel empowered and motivated to pursue their goals and dreams just like we do at WBR, if we can do it, anyone can.</p>
+
+			<p>We will like to take this opportunity to gladly welcome you to the Weren’t Born Rich family.</p>
+			<p><strong>STAY HEALTHY <br>STAY ACTIVE <br>AND OF COURSE STAY RICH</strong></p>
 		</div>
 	</div>
 </section>
 
-<% include partials/footer.ejs %>
+<%_ include partials/footer.ejs _%>

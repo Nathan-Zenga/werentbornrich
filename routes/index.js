@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
 
 router.get('/products', (req, res) => {
 	res.render('products', {
+		headingTitle: "Products",
 		clothingSection: [
 			[
 
@@ -35,6 +36,21 @@ router.get('/products', (req, res) => {
 			]
 		]
 	});
+});
+
+router.get('/products/:product', (req, res) => {
+	res.render('products', {
+		headingTitle: req.params.product,
+		clothingSection: null
+	})
+});
+
+router.get('/our-story', (req, res) => {
+	res.render('about')
+});
+
+router.get('/contact', (req, res) => {
+	res.render('contact')
 });
 
 module.exports = router;

@@ -109,20 +109,16 @@ nav .cart {
 }
 
 .close-menu {
+	position: absolute;
 	top: 0;
 	right: 0;
-	position: absolute;
-	padding: .25em .5em;
+	padding: 10px 15px;
 	font-size: 2em;
 	color: white;
 	text-align: center;
 	cursor: pointer;
 	z-index: 50;
 	font-weight: bold;
-}
-
-section {
-	height: 100vh
 }
 
 section .heading {
@@ -136,10 +132,13 @@ section .heading > div {
 	color: white;
 }
 
-section .heading .category-title {
+section .heading .title {
+	color: gold;
 	font-weight: bold;
 	font-size: 1.5em;
 	text-align: right;
+	text-transform: capitalize;
+	letter-spacing: 2px;
 }
 
 @media (min-width: 768px) {
@@ -149,24 +148,21 @@ section .heading .category-title {
 	}
 }
 
-.homescreen .strip {
-	position: relative;
-	left: 50%;
-	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%);
-	width: 85vw;
-	height: 100%;
+.homescreen > .inner-body {
+    position: relative;
+    height: 100vh;
+    padding: 0 30px;
 }
 
-.homescreen .strip > .column {
+.homescreen > .inner-body > .column {
 	background-color: rgb(20, 20, 43);
 }
 
-.homescreen .strip .info-container {
+.homescreen > .inner-body .info-container {
 	height: 30%;
 }
 
-.homescreen .strip .img-container {
+.homescreen > .inner-body .img-container {
 	height: 70%;
 }
 
@@ -174,8 +170,10 @@ section .heading .category-title {
 	position: absolute;
 	top: 0;
 	bottom: 30px;
-	left: -7.5vw;
-	right: -7.5vw;
+	left: -15px;
+	right: -15px;
+	border-radius: 15px;
+	overflow: hidden;
 }
 
 .homescreen #index-reel {
@@ -240,17 +238,11 @@ section .heading .category-title {
 }
 
 @media (min-width: 768px) {
-	.homescreen .strip {
-		top: 0;
-		left: 0;
-		-webkit-transform: none;
-		transform: none;
-		height: 100%;
-		width: 100%;
+	.homescreen > .inner-body {
 		padding: 100px 0;
 	}
 
-	.homescreen .strip > .column {
+	.homescreen > .inner-body > .column {
 		height: 100%;
 	}
 
@@ -260,6 +252,7 @@ section .heading .category-title {
 		left: 0px;
 		right: 30px;
 		margin-top: 0;
+		border-radius: 0;
 	}
 
 	.homescreen .header {
@@ -268,12 +261,9 @@ section .heading .category-title {
 
 	.homescreen .products-options.grid {
 		position: absolute;
-		width: auto;
-		top: 30px;
-		bottom: 30px;
-		left: 30px;
-		right: 30px;
-		padding: 0;
+		width: 100%;
+		height: 100%;
+		left: 0;
 		-webkit-transform: none;
 		transform: none;
 		background-color: transparent;
@@ -297,7 +287,6 @@ section .heading .category-title {
 }
 
 .products .thumbs-container {
-	position: absolute;
 	padding: 50px;
 	padding-top: 0;
 	width: 100%;
@@ -333,5 +322,21 @@ section .heading .category-title {
 	.products .thumb {
 		margin-bottom: 0;
 		padding: 10px;
+	}
+}
+
+.our-story > .inner-body {
+	padding: 0 50px 50px;
+}
+
+.our-story > .inner-body p {
+	margin-bottom: 2em
+}
+
+@media (min-width: 768px) {
+	.our-story .column {
+		float: none;
+		display: table-cell;
+		padding: 0 30px;
 	}
 }
