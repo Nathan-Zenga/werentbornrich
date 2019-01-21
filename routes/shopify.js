@@ -23,13 +23,13 @@ const scopes = 'write_products';
 const forwardingAddress = "http://werentbornrich.herokuapp.com";
 
 
-app.get('/shopify', (req, res) => {
+router.get('/', (req, res) => {
 	const shop = req.query.shop;
 	if (shop) {
 		const state = nonce();
 		const redirectUri = forwardingAddress + "/shopify/callback";
 		const installUrl = "https://" + shop + "/admin/oauth/authorize?client_id=" + apiKey +
-		"&scope" + scopes +
+		"&scope=" + scopes +
 		"&state=" + state +
 		"&redirect_uri=" + redirectUri;
 
@@ -41,7 +41,7 @@ app.get('/shopify', (req, res) => {
 })
 
 // route for when unlisted app is installed (redirected)
-router.get("/shopify/callback", (req, res) => {
+router.get("/callback", (req, res) => {
 	const { shop, hmac, code, state } = req.query;
 	const stateCookie = cookie.parse(req.headers.cookie).state;
 
