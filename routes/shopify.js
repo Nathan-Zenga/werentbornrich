@@ -6,6 +6,7 @@ const cookie = require("cookie");
 const nonce = require("nonce");
 const querystring = require("querystring");
 const request = require("request-promise");
+const aws = require("aws-sdk");
 
 require('dotenv').config();
 
