@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const cookie = require("cookie");
@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
 	} else {
 		return res.status(400).send("missing shop parameters. Please add '?shop=your-dev-shop.myspotify.com' to your request")
 	}
-})
+});
 
 // route for when unlisted app is installed (redirected)
 router.get("/callback", (req, res) => {
@@ -46,13 +46,7 @@ router.get("/callback", (req, res) => {
 	const stateCookie = cookie.parse(req.headers.cookie).state;
 
 	if (state !== stateCookie) {
-		return res.status(403).send({
-			msg: 'Request origin cannot be verified',
-			state: state,
-			stateCookie: stateCookie,
-			"typeof state": typeof state,
-			"typeof stateCookie": typeof stateCookie
-		});
+		return res.status(403).send('Request origin cannot be verified');
 	}
 
 	if (shop && hmac && code) {
@@ -82,9 +76,7 @@ router.get("/callback", (req, res) => {
 			const accessToken = accessTokenResponse.access_token;
 			// DONE: Use access token to make API call to 'shop' endpoint
 			const shopRequestUrl = 'https://' + shop + '/admin/shop.json';
-			const shopRequestHeader = {
-				'X-Shopify-Access-Token': accessToken
-			};
+			const shopRequestHeader = { 'X-Shopify-Access-Token': accessToken };
 
 			request.get(shopRequestUrl, { headers: shopRequestHeader })
 			.then(apiResponse => {

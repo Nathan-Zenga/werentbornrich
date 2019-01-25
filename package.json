@@ -20,7 +20,8 @@
     "nodemailer": "^4.6.8",
     "nonce": "^1.0.4",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "shopify-node-api": "^1.10.0"
   },
   "engines": {
     "node": "*",
