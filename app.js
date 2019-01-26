@@ -1,11 +1,13 @@
-var express = require('express'),
-	app = express(),
-	bodyParser = require('body-parser'),
-	cookieParser = require('cookie-parser'),
-	http = require('http'), // core module
-	path = require('path'), // core module
-	session = require('express-session'),
-	ejs = require('ejs');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const http = require('http'); // core module
+const path = require('path'); // core module
+const session = require('express-session');
+const ejs = require('ejs');
+
+require('dotenv').config();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
