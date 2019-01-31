@@ -87,6 +87,11 @@ a:hover {
 	opacity: 1;
 }
 
+.hamburger-box {
+    width: 30px;
+    height: 25px;
+}
+
 #toTop {
 	display: none;
 	bottom: 20px;

@@ -52,4 +52,9 @@ $(function(){
 	$(".products .thumb").each(function(i) {
 		$(this).delay(i * 200).riseIn(1000)
 	});
+
+	$(".enlarge-img").click(function() {
+		var img = $(this).parent().css("background-image");
+		$("#imageView .image").css("background-image", img);
+	});
 });

@@ -2,13 +2,15 @@
   "name": "werentbornrich",
   "version": "1.0.0",
   "description": "online store",
-  "main": "app.js",
+  "main": "start.js",
   "scripts": {
-    "start": "node app",
+    "start": "node start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "aws-sdk": "^2.387.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "body-parser": "^1.18.3",
     "cookie": "^0.3.1",
     "cookie-parser": "^1.4.1",
@@ -17,10 +19,12 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "mongoose": "^5.1.0",
+    "node-fetch": "^2.3.0",
     "nodemailer": "^4.6.8",
     "nonce": "^1.0.4",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
+    "shopify-buy": "^2.0.1",
     "shopify-node-api": "^1.10.0"
   },
   "engines": {

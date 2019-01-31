@@ -7,18 +7,22 @@
 	<div class="category" id="tshirts">
 		<div class="thumbs-container">
 
-			<%_ if (clothingSection && clothingSection.length) { _%>
-				<%_ clothingSection.forEach(row => { _%>
+			<%_ if (products && products.length) { _%>
+				<%_ let span = null; _%>
+				<%_ products.forEach(row => { _%>
+					<%_ span = span ? span : row.length <= 4 ? 4 : 12 / row.length; _%>
 					<div class="row">
-					<%_ row.forEach(thumb => { _%>
-						<div class="thumb col-sm-4" style="display: none">
-							<div class="inner-thumb">
-								<div class="img" style="background-image: url('<%= thumb.imgSrc %>');"></div>
-								<div class="details">
-									<div class="row product-name"><%= thumb.productName %></div>
-									<div class="row product-price">£<%= thumb.price %></div>
+					<%_ row.forEach(product => { _%>
+						<div class="thumb col-sm-<%= span %>" style="display: none">
+							<a href="/product/<%= product.id %>">
+								<div class="inner-thumb">
+									<div class="img filter" style="background-image: url('<%= product.image.src %>');"></div>
+									<div class="details">
+										<div class="row product-name"><%= product.title %></div>
+										<div class="row product-price">£<%= product.variants[0].price %></div>
+									</div>
 								</div>
-							</div>
+							</a>
 						</div>
 					<%_ }) _%>
 					</div>

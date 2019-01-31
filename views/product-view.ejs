@@ -1,0 +1,38 @@
+<%_ include partials/header.ejs _%>
+
+<div id="imageView" class="modal fade" role="dialog">
+	<div class="close-view" data-dismiss="modal" style="position: absolute; right: 0; padding: 15px;">
+		<div class="hamburger hamburger--squeeze is-active">
+			<span class="hamburger-box"><span class="hamburger-inner"></span></span>
+		</div>
+	</div>
+	<div class="container" style="padding: 30px; height: 100%;">
+		<div class="image" style="height: 100%; width: 100%; background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+	</div>
+</div>
+
+<section class="product-view">
+	<div class="heading">
+		<div class="title"><%= product.title %></div>
+	</div>
+	<div class="inner-body">
+		<div class="col-sm-6 main-img">
+			<div class="img" style="background-image: url('<%= product.image.src %>');">
+				<div class="enlarge-img" data-toggle="modal" data-target="#imageView"><i class="fas fa-search"></i></div>
+			</div>
+		</div>
+		<div class="col-sm-6 details">
+			<h2 class="product-price">£<%= product.variants[0].price %></h2>
+			<p class="product-description"></p>
+		</div>
+	</div>
+	<script>
+		let txtElm = document.createElement("textarea");
+		txtElm.innerHTML = "<%= product.body_html.replace(/\n/g, '') %>";
+		let htmlString = txtElm.value;
+
+		$(".product-description").html(htmlString);
+	</script>
+</section>
+
+<%_ include partials/footer.ejs _%>

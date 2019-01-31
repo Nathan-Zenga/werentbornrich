@@ -7,8 +7,6 @@ const path = require('path'); // core module
 const session = require('express-session');
 const ejs = require('ejs');
 
-require('dotenv').config();
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -32,7 +30,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', require('./routes/index'));
-app.use('/shopify', require('./routes/shopify'));
+app.use('/shopify', require('./routes/shopify-install'));
 
 const port = process.env.PORT;
 app.listen(port, function() {

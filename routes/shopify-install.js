@@ -6,7 +6,6 @@ const cookie = require("cookie");
 const nonce = require("nonce");
 const querystring = require("querystring");
 const request = require("request-promise");
-const shopifyAPI = require("shopify-node-api");
 
 require('dotenv').config();
 
@@ -15,24 +14,22 @@ const apiSecret = process.env.SHOPIFY_API_SECRET;
 const scopes = 'write_products';
 
 // replacing actual forwarding address
-const forwardingAddress = "http://9cc144f3.ngrok.io";
+const forwardingAddress = "https://d457238b.ngrok.io";
 
 router.get('/', (req, res) => {
 	const shop = req.query.shop;
 	if (shop) {
 
 		const state = nonce()();
-		const Shopify = new shopifyAPI({
-			shop: shop,
-			shopify_api_key: apiKey,
-			shopify_shared_secret: apiSecret,
-			shopify_scope: scopes,
-			redirect_uri: forwardingAddress + "/shopify/callback",
-			nonce: state
-		});
+		const redirectUri = forwardingAddress + "/shopify/callback";
+		const installUrl = "https://" + shop + "/admin/oauth/authorize?client_id=" + apiKey +
+		"&scope=" + scopes +
+		"&state=" + state +
+		"&redirect_uri=" + redirectUri;
 
 		res.cookie("state", state);
-		res.redirect(Shopify.buildAuthURL());
+		res.redirect(installUrl);
+
 	} else {
 		return res.status(400).send("missing shop parameters. Please add '?shop=your-dev-shop.myspotify.com' to your request")
 	}
@@ -76,8 +73,8 @@ router.get("/callback", (req, res) => {
 
 			console.log("accessToken: " + accessToken);
 
-			// DONE: Use access token to make API call to 'products' endpoint
-			const shopRequestUrl = 'https://' + shop + '/products.json';
+			// DONE: Use access token to make API call to 'shop' endpoint
+			const shopRequestUrl = 'https://' + shop + '/shop.json';
 			const shopRequestHeader = { 'X-Shopify-Access-Token': accessToken };
 
 			request.get(shopRequestUrl, { headers: shopRequestHeader })

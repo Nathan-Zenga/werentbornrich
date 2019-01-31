@@ -1,56 +1,35 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const showProducts = require("../config/show-products-callback");
 
-router.get('/', (req, res) => {
-	res.render('index')
-});
+require('dotenv').config();
 
-router.get('/products', (req, res) => {
-	res.render('products', {
-		headingTitle: "Products",
-		clothingSection: [
-			[
+router.get("/", (req, res) => { res.render("index") });
+router.get("/products", showProducts);
+router.get("/products/:product", showProducts);
+router.get("/our-story", (req, res) => { res.render("about") });
+router.get("/contact", (req, res) => { res.render("contact") });
 
-				{ imgSrc: 'https://assets.bigcartel.com/product_images/224256073/3AA09521-E79A-4ACC-B38C-79FADCEE4F61.jpeg?auto=format&fit=max&w=900', 
-				productName: 'WBR Classic Tee (White)',
-				price: "13.50" },
+router.get("/product/:id", (req, res) => {
+	const Shopify = new require("shopify-node-api")({
+		shop: 'werentbornrichteststore.myspotify.com',
+		shopify_api_key: process.env.SHOPIFY_API_KEY,
+		shopify_shared_secret: process.env.SHOPIFY_API_SECRET,
+		access_token: process.env.SHOPIFY_ACCESS_TOKEN
+	});
 
-				{ imgSrc: 'https://assets.bigcartel.com/product_images/224256073/3AA09521-E79A-4ACC-B38C-79FADCEE4F61.jpeg?auto=format&fit=max&w=900', 
-				productName: 'WBR Classic Tee (White)',
-				price: "13.50" },
+	Shopify.get("/admin/products/" + req.params.id + ".json", null, function(err, data, headers){
+		if (err) return res.send(err);
 
-				{ imgSrc: 'https://assets.bigcartel.com/product_images/224256073/3AA09521-E79A-4ACC-B38C-79FADCEE4F61.jpeg?auto=format&fit=max&w=900', 
-				productName: 'WBR Classic Tee (White)',
-				price: "13.50" }
-
-			], [
-
-				{ imgSrc: 'https://assets.bigcartel.com/product_images/224256073/3AA09521-E79A-4ACC-B38C-79FADCEE4F61.jpeg?auto=format&fit=max&w=900', 
-				productName: 'WBR Classic Tee (White)',
-				price: "13.50" },
-
-				{ imgSrc: 'https://assets.bigcartel.com/product_images/224256073/3AA09521-E79A-4ACC-B38C-79FADCEE4F61.jpeg?auto=format&fit=max&w=900', 
-				productName: 'WBR Classic Tee (White)',
-				price: "13.50" }
-
-			]
-		]
+		if (data.errors) {
+			res.redirect("/error")
+		} else {
+			res.render("product-view", { product: data.product })
+		}
 	});
 });
 
-router.get('/products/:product', (req, res) => {
-	res.render('products', {
-		headingTitle: req.params.product,
-		clothingSection: null
-	})
-});
-
-router.get('/our-story', (req, res) => {
-	res.render('about')
-});
-
-router.get('/contact', (req, res) => {
-	res.render('contact')
-});
+router.get("/error", (req, res) => { res.status(404).render("error") });
+router.get("*", (req, res) => { res.redirect("/error") });
 
 module.exports = router;
