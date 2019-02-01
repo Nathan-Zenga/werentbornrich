@@ -1,8 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const showProducts = require("../config/show-products-callback");
+let s3 = null;
 
-require('dotenv').config();
+if (process.env.PWD) {
+	require('dotenv').config()
+} else {
+	s3 = new require('aws-sdk').s3({DB: process.env.DB})
+}
 
 router.get("/", (req, res) => { res.render("index") });
 router.get("/products", showProducts);
