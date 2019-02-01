@@ -20,16 +20,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
 	secret: 'secret',
 	saveUninitialized: true,
-	resave: true
+	resave: true,
+	cookie: {
+		secure: false,
+		maxAge: 60000
+	}
 }));
 
 // Global variables
 app.use(function (req, res, next) {
 	res.locals.url = req.url;
+	res.locals.cart_count = req.session.items ? req.session.items.length : 0;
 	next();
 });
 
 app.use('/', require('./routes/index'));
+app.use('/products', require('./routes/products'));
 app.use('/shopify', require('./routes/shopify-install'));
 
 const port = process.env.PORT;

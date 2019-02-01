@@ -21,8 +21,6 @@
 <body>
 	<div class="logo"><a href="/"><img src="/img/logo 1.png"></a></div>
 	<nav>
-		<a class="menu col-sm-1 mb-view" id="menu">Menu</a>
-
 		<div class="link-group col-sm-10 dt-view">
 			<a class="close-menu mb-view">&#10005;</a>
 			<a href="/products" class="link expand col-sm-4" id="products">Products</a>
@@ -38,7 +36,8 @@
 			<a href="/contact" class="link col-sm-4" id="contact">Contact</a>
 		</div>
 
-		<a class="col-sm-2 cart"><i class="fas fa-shopping-cart"></i></a>
+		<a class="col-sm-2 cart"><i class="fas fa-shopping-cart"></i> <span class="count"><%= cart_count %></span></a>
+		<a class="menu col-sm-1 mb-view" id="menu">Menu</a>
 	</nav>
 	<!-- <div id="toTop"><i class="fas fa-angle-up animate up"></i></div> -->
 	<main>

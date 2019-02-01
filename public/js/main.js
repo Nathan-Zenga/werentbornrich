@@ -1,4 +1,16 @@
 $(function(){
+	var randomRGBA = (a) => {
+		a = a || 1;
+		var arr = [];
+
+		for (var i = 0; i < 3; i++) {
+			arr.push(Math.round(Math.random() * 255));
+		}
+
+		arr = "rgba(" + arr.join(",") + "," + a + ")";
+		return arr;
+	};
+
 	$.fn.riseIn = function(milli, cb){
 		milli = milli || 400;
 		if (this.css("display") == "none" || this.css("opacity") == "0") {
@@ -56,5 +68,26 @@ $(function(){
 	$(".enlarge-img").click(function() {
 		var img = $(this).parent().css("background-image");
 		$("#imageView .image").css("background-image", img);
+	});
+
+	$("#add_to_cart").click(function(e) {
+		e.preventDefault();
+		let form = $(this).parent("form");
+		let data = {
+			productID: form.data("product-id"),
+			size: form.find("select").val()
+		}
+
+		$.post("/products/add-to-cart", data, function(val) {
+			var selector = isNaN(val) ? ".err-msg" : ".cart .count";
+			$(selector).text(val);
+			if (isNaN(val)) $(selector).delay(3000).fadeOut(function(){
+				$(this).text("").css("display", "");
+			});
+		});
+	});
+
+	$(".cart-view .item * ").each(function() {
+		$(this).css("background-color", randomRGBA());
 	});
 });

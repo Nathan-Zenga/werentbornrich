@@ -24,6 +24,18 @@
 		<div class="col-sm-6 details">
 			<h2 class="product-price">£<%= product.variants[0].price %></h2>
 			<p class="product-description"></p>
+			<br>
+			<form class="form-group" data-product-id="<%= product.id %>" style="max-width: 400px">
+				<select class="form-control" id="size" name="size">
+					<option value="">Select size</option>
+					<%_ product.variants.forEach((variant, i) => { _%>
+						<option value="<%= variant.id %>"><%= variant.title %></option>
+					<%_ }); _%>
+				</select>
+				<br>
+				<input class="form-control submit" type="submit" id="add_to_cart" value="ADD TO CART" style="font-weight: bold">
+			</form>
+			<p class="err-msg"></p>
 		</div>
 	</div>
 	<script>

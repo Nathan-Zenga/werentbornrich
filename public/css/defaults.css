@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Questrial|Overpass+Mono|Source+Sans+Pro|Oswald');
 
 html, body {
-	color: black;
+	color: rgb(20, 20, 43);
 	font-family: 'Questrial', 'Overpass Mono', sans-serif;
 	font-feature-settings: "liga" 0;
 }
@@ -55,6 +55,10 @@ a:hover {
 	.dt-view {
 		display: block;
 	}
+}
+
+.centre, .centreX, .centreY {
+	position: absolute;
 }
 
 .centre {
