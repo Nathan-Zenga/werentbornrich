@@ -7,6 +7,7 @@ router.get("/", (req, res) => { res.render("index", {headingTitle: null}) });
 router.get("/our-story", (req, res) => { res.render("about", {headingTitle: "Our Story"}) });
 router.get("/contact", (req, res) => { res.render("contact", {headingTitle: "Contact"}) });
 router.get("/cart", (req, res) => {
+	console.log(env);
 	const Shopify = new shopifyAPI({
 		shop: 'werentbornrichteststore.myspotify.com',
 		shopify_api_key: env.apiKey,
@@ -20,7 +21,7 @@ router.get("/cart", (req, res) => {
 		res.render("cart", {
 			headingTitle: "Cart",
 			products: data.products,
-			cart_items: req.session.items
+			cart_items: req.session.items || []
 		});
 	});
 });

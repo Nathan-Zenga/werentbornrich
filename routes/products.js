@@ -27,6 +27,10 @@ router.get("/p/:id", (req, res) => {
 });
 
 router.post("/add-to-cart", (req, res) => {
+	var hour = 3600000;
+	req.session.cookie.expires = new Date(Date.now() + hour);
+	req.session.cookie.maxAge = hour;
+
 	if (!req.body.size) return res.send("Please select size");
 	if (!req.session.items) req.session.items = [];
 
