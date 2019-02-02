@@ -23,7 +23,7 @@ app.use(session({
 	resave: true,
 	cookie: {
 		secure: false,
-		maxAge: 60000
+		maxAge: 360000
 	}
 }));
 
@@ -34,9 +34,9 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.use('/', require('./routes/index'));
 app.use('/products', require('./routes/products'));
 app.use('/shopify', require('./routes/shopify-install'));
+app.use('/', require('./routes/index'));
 
 const port = process.env.PORT;
 app.listen(port, function() {

@@ -2,7 +2,8 @@ const splitPerRow = require("./split-per-row");
 const shopifyAPI = require("shopify-node-api");
 const env = require("./env")();
 
-module.exports = (req, res) => {
+// for routes "/products" or "/products/:product"
+module.exports = (req, res, next) => {
 
 	var Shopify = new shopifyAPI({
 		shop: "werentbornrichteststore.myspotify.com",
@@ -32,7 +33,7 @@ module.exports = (req, res) => {
 				products: splitPerRow(arr, 3)
 			})
 		} else {
-			res.redirect("/error");
+			next()
 		}
 	});
 

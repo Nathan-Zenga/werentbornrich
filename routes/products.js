@@ -18,7 +18,10 @@ router.get("/p/:id", (req, res) => {
 		if (err || data.errors) {
 			res.redirect("/error")
 		} else {
-			res.render("product-view", { product: data.product })
+			res.render("product-view", {
+				headingTitle: data.product.title,
+				product: data.product
+			})
 		}
 	});
 });
