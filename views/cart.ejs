@@ -5,47 +5,53 @@
 	<div class="inner-body" style="padding: 0 50px 50px;">
 		<div class="items-container">
 
+			<%_ var total = 0; _%>
 			<%_ cart_items.forEach(item => { _%>
 				<%_ products.forEach(product => { _%>
-					<%_ if ( item.productID === product.id ) { _%>
+					<%_ if ( item.productID == product.id ) { _%>
 						<%_ product.variants.forEach(variant => { _%>
-							<div class="item">
-								<div class="col-sm-3 item-img">I M G</div>
+							<%_ if ( item.variantID == variant.id ) { _%>
+								<%_ total += parseFloat(variant.price) _%>
+								<div class="item" data-product-id="<%= product.id %>" data-variant-id="<%= variant.id %>">
+									<div class="col-sm-3 item-img" style="background-size: cover; background-position: center; background-image: url('<%= product.image.src %>');"></div>
 
-								<div class="col-sm-6 item-details fill-height">
-									<div class="inner-group" style="position: relative;">
-										<div class="item-name row">Title</div>
-										<div class="item-sub-details row">
-											<div class="item-size">Size: M</div>
-											<div class="item-price">£15</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-3 item-options fill-height">
-									<div class="col-xs-6 item-quantity fill-height">
-										<div class="row" style="height: 80%">
-											<div class="number centre">1</div>
-										</div>
-										<div class="row symbols" style="height: 20%">
-											<div class="col-xs-6 fill-height">
-												<div class="centre">-</div>
-											</div>
-											<div class="col-xs-6 fill-height">
-												<div class="centre">+</div>
+									<div class="col-sm-6 item-details fill-height">
+										<div class="inner-group" style="position: relative;">
+											<div class="item-name row"><%= product.title %></div>
+											<div class="item-sub-details row">
+												<div class="item-size">Size: <%= variant.title %></div>
+												<div class="item-price">£<span class="num-value"><%= variant.price %></span></div>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-xs-6 item-remove fill-height">
-										<div class="centre">&times;</div>
+									<div class="col-sm-3 item-options fill-height">
+										<div class="col-xs-9 item-quantity fill-height">
+											<div class="row" style="height: 60%">
+												<div class="number">1</div>
+											</div>
+											<div class="row symbols" style="height: 40%">
+												<div class="col-xs-6 fill-height">
+													<div class="centre">-</div>
+												</div>
+												<div class="col-xs-6 fill-height">
+													<div class="centre">+</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-xs-3 item-remove fill-height">
+											<div class="remove-button remove-symbol centre">&times;</div>
+										</div>
 									</div>
 								</div>
-							</div>
+							<%_ } _%>
 						<%_ }); _%>
 					<%_ } _%>
 				<%_ }); _%>
 			<%_ }); _%>
+
+			<div class="total">Total: £<span class="num-value" style="font-size: 1.5em"><%= total.toFixed(2) %></span></div>
 		</div>
 	</div>
 </section>

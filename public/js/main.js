@@ -72,18 +72,37 @@ $(function(){
 
 	$("#add_to_cart").click(function(e) {
 		e.preventDefault();
-		let form = $(this).parent("form");
+		var button = $(this);
+		var originalText = button.val();
+		let form = button.parent("form");
 		let data = {
 			productID: form.data("product-id"),
-			size: form.find("select").val()
+			variantID: form.find("select").val()
 		}
 
 		$.post("/products/add-to-cart", data, function(val) {
+			button.val("ITEM ADDED TO CART").delay(2000).show(0, function() { $(this).val(originalText) });
 			var selector = isNaN(val) ? ".err-msg" : ".cart .count";
 			$(selector).text(val);
 			if (isNaN(val)) $(selector).delay(3000).fadeOut(function(){
 				$(this).text("").css("display", "");
 			});
+		});
+	});
+
+	$(".cart-view .remove-button").click(function(e) {
+		e.preventDefault();
+		var item = $(this).closest(".item");
+		var data = {
+			variantID: item.data("variant-id"),
+			productID: item.data("product-id")
+		};
+
+		$.post("/products/remove-from-cart", data, function(new_count) {
+			$(".cart .count").text(new_count);
+			item.slideUp();
+			var newTotal = parseFloat($(".total .num-value").text()) - parseFloat(item.find(".item-price .num-value").text());
+			$(".total .num-value").text(newTotal.toFixed(2));
 		});
 	});
 

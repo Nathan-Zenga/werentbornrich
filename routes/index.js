@@ -2,39 +2,29 @@ const express = require("express");
 const router = express.Router();
 const env = require("../config/env")();
 const shopifyAPI = require("shopify-node-api");
+const Shopify = new shopifyAPI({
+	shop: 'werentbornrichteststore.myspotify.com',
+	shopify_api_key: env.apiKey,
+	shopify_shared_secret: env.apiSecret,
+	access_token: env.access_token
+});
 
 router.get("/", (req, res) => { res.render("index", {headingTitle: null}) });
 router.get("/our-story", (req, res) => { res.render("about", {headingTitle: "Our Story"}) });
 router.get("/contact", (req, res) => { res.render("contact", {headingTitle: "Contact"}) });
 router.get("/cart", (req, res) => {
-	console.log(env);
-	const Shopify = new shopifyAPI({
-		shop: 'werentbornrichteststore.myspotify.com',
-		shopify_api_key: env.apiKey,
-		shopify_shared_secret: env.apiSecret,
-		access_token: env.access_token
-	});
-
-	Shopify.get("/admin/products/.json", null, function(err, data, headers){
+	Shopify.get("/admin/products.json", null, function(err, data, headers){
 		if (err) return err;
-
 		res.render("cart", {
 			headingTitle: "Cart",
 			products: data.products,
-			cart_items: req.session.items || []
+			cart_items: req.session.items ? req.session.items.reverse() : []
 		});
 	});
 });
 
 router.get("/list", (req, res) => {
-	const Shopify = new shopifyAPI({
-		shop: 'werentbornrichteststore.myspotify.com',
-		shopify_api_key: env.apiKey,
-		shopify_shared_secret: env.apiSecret,
-		access_token: env.access_token
-	});
-
-	Shopify.get("/admin/products/.json", null, function(err, data, headers){
+	Shopify.get("/admin/products.json", null, function(err, data, headers){
 		if (err) return err;
 		res.send(data);
 	});

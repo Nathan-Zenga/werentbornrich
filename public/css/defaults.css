@@ -3,9 +3,10 @@
 @import url('https://fonts.googleapis.com/css?family=Questrial|Overpass+Mono|Source+Sans+Pro|Oswald');
 
 html, body {
-	color: rgb(20, 20, 43);
+	color: rgb(255, 188, 0);
 	font-family: 'Questrial', 'Overpass Mono', sans-serif;
 	font-feature-settings: "liga" 0;
+	background-color: rgb(25, 25, 25);
 }
 
 .font-2 {
@@ -103,4 +104,11 @@ a:hover {
 	padding: 20px;
 	background-color: black;
 	color: white;
+}
+
+input[type=submit] {
+	font-weight: bold;
+	background-color: inherit;
+	color: inherit;
+	border-color: inherit;
 }

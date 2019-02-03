@@ -18,7 +18,6 @@ nav {
 	padding: 0 50px;
 	width: 100%;
 	text-transform: uppercase;
-	color: white;
 	text-align: right;
 	font-weight: bold;
 	z-index: 99;
@@ -26,6 +25,7 @@ nav {
 
 nav .menu {
 	padding: 0 0 20px 20px;
+	color: rgb(25, 25, 25);
 }
 
 nav .link {
@@ -39,6 +39,10 @@ nav .sublist {
 	padding: 0.075em 0;
 }
 
+nav .cart {
+	color: rgb(25, 25, 25);
+}
+
 @media (min-width: 768px) {
 	nav {
 		top: 100px;
@@ -47,12 +51,15 @@ nav .sublist {
 		width: 400px;
 		padding: 0;
 		line-height: initial;
-		color: black;
 		text-align: left;
 	}
 
 	nav .link {
 		margin: 0;
+	}
+
+	nav .cart {
+		color: inherit;
 	}
 }
 
@@ -64,7 +71,7 @@ nav .sublist {
 		left: 0;
 		text-align: center;
 		padding: 20px 0;
-		background-color: rgb(20, 20, 43);
+		background-color: rgb(25, 25, 25);
 		z-index: 1;
 	}
 }
@@ -75,7 +82,7 @@ nav .sublist {
 	left: 50px;
 	width: 70px;
 	height: 70px;
-	background-color: rgb(255, 188, 0);
+	background-color: rgb(25, 25, 25);
 	border-radius: 100%;
 	z-index: 10;
 }
@@ -89,6 +96,7 @@ nav .sublist {
 	color: white;
 	font-weight: bold;
 	text-align: center;
+	filter: invert(1);
 }
 
 @media (min-width: 768px) {
@@ -99,6 +107,7 @@ nav .sublist {
 		height: 100px;
 		-webkit-transform: translateY(-65%);
 		transform: translateY(-65%);
+		border: 5px solid rgb(255, 188, 0);
 	}
 }
 
@@ -108,7 +117,6 @@ nav .sublist {
 	right: 0;
 	padding: 10px 15px;
 	font-size: 2em;
-	color: white;
 	text-align: center;
 	cursor: pointer;
 	z-index: 50;
@@ -117,7 +125,7 @@ nav .sublist {
 
 section .heading {
 	position: relative;
-	background-color: rgb(20, 20, 43);
+	background-color: rgb(255, 188, 0);
 	margin-bottom: 2em;
 	padding: 8em 50px 1em;
 }
@@ -127,7 +135,7 @@ section .heading > div {
 }
 
 section .heading .title {
-	color: gold;
+	color: rgb(25, 25, 25);
 	font-weight: bold;
 	font-size: 1.5em;
 	text-align: right;
@@ -149,7 +157,7 @@ section .heading .title {
 }
 
 .homescreen > .inner-body > .column {
-	background-color: rgb(20, 20, 43);
+	background-color: rgb(255, 188, 0);
 }
 
 .homescreen > .inner-body .info-container {
@@ -203,7 +211,7 @@ section .heading .title {
 }
 
 .homescreen .products-options.grid .thumb {
-	padding: 20px;
+	padding: 10px;
 }
 
 .homescreen .products-options.grid .thumb-link {
@@ -213,6 +221,7 @@ section .heading .title {
 	height: 100%;
 	border-radius: 7px;
 	overflow: hidden;
+	box-shadow: 0 0 20px rgba(25, 25, 25, .5);
 }
 
 .homescreen .products-options.grid .thumb-link p {
@@ -289,20 +298,15 @@ section .heading .title {
 	margin-bottom: 20px;
 }
 
-.products .inner-thumb {
-	overflow: hidden;
-	border-radius: 7px;
-}
-
 .products .img {
 	height: 300px;
 	background-size: cover;
 	background-position: center;
+	border-radius: 7px;
 }
 
 .products .details {
 	padding: 10px 20px;
-	background-color: grey;
 }
 
 .products .details .product-price {
@@ -422,8 +426,26 @@ section .heading .title {
 	font-size: 1.5em;
 }
 
+.cart-view .item-quantity .number {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	text-align: center;
+}
+
 .cart-view .item-remove {
 	font-weight: bold;
+	font-size: 2em;
+}
+
+.cart-view .item-remove .remove-symbol {
+	padding: 20px;
+	cursor: pointer;
+}
+
+.cart-view .total {
+	text-align: center;
 	font-size: 2em;
 }
 

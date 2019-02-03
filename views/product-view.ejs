@@ -40,7 +40,6 @@
 		let txtElm = document.createElement("textarea");
 		txtElm.innerHTML = "<%= product.body_html.replace(/\n/g, '') %>";
 		let htmlString = txtElm.value;
-
 		$(".product-description").html(htmlString);
 	</script>
 </section>
