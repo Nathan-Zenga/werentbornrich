@@ -59,7 +59,7 @@ a:hover {
 }
 
 .centre, .centreX, .centreY {
-	position: absolute;
+	position: relative;
 }
 
 .centre {

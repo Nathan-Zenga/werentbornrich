@@ -81,12 +81,15 @@ $(function(){
 		}
 
 		$.post("/products/add-to-cart", data, function(val) {
-			button.val("ITEM ADDED TO CART").delay(2000).show(0, function() { $(this).val(originalText) });
 			var selector = isNaN(val) ? ".err-msg" : ".cart .count";
 			$(selector).text(val);
-			if (isNaN(val)) $(selector).delay(3000).fadeOut(function(){
-				$(this).text("").css("display", "");
-			});
+			if (isNaN(val)) {
+				$(selector).delay(3000).fadeOut(function(){
+					$(this).text("").css("display", "");
+				});
+			} else {
+				button.val("ITEM ADDED TO CART").delay(2000).show(0, function() { $(this).val(originalText) });
+			}
 		});
 	});
 
@@ -104,9 +107,5 @@ $(function(){
 			var newTotal = parseFloat($(".total .num-value").text()) - parseFloat(item.find(".item-price .num-value").text());
 			$(".total .num-value").text(newTotal.toFixed(2));
 		});
-	});
-
-	$(".cart-view .item * ").each(function() {
-		$(this).css("background-color", randomRGBA());
 	});
 });
