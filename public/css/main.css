@@ -147,7 +147,7 @@ section .heading .title {
 	font-weight: bold;
 	font-size: 1.5em;
 	text-align: right;
-	text-transform: capitalize;
+	text-transform: uppercase;
 	letter-spacing: 2px;
 }
 
@@ -397,11 +397,11 @@ section .heading .title {
 .cart-view .item {
 	margin-bottom: 20px;
 	overflow: hidden;
-	border-radius: 15px;
 }
 
 .cart-view .item .item-img {
 	height: 200px;
+	border-radius: 7px;
 }
 
 .cart-view .item-details {
@@ -444,6 +444,7 @@ section .heading .title {
 	background-color: rgb(255, 188, 0);
 	text-align: center;
 	cursor: pointer;
+	border-radius: 7px;
 }
 
 .cart-view .total {
