@@ -93,7 +93,7 @@ $(function(){
 		});
 	});
 
-	$(".cart-view .remove-button").click(function(e) {
+	$(".cart-view .item-remove").click(function(e) {
 		e.preventDefault();
 		var item = $(this).closest(".item");
 		var data = {

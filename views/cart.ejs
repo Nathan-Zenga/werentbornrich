@@ -13,11 +13,13 @@
 							<%_ if ( item.variantID == variant.id ) { _%>
 								<%_ total += parseFloat(variant.price) _%>
 								<div class="item" data-product-id="<%= product.id %>" data-variant-id="<%= variant.id %>">
-									<div class="col-sm-3 item-img" style="background-size: cover; background-position: center; background-image: url('<%= product.image.src %>');"></div>
+									<a href="/products/p/<%= product.id %>">
+										<div class="col-sm-3 item-img" style="background-size: cover; background-position: center; background-image: url('<%= product.image.src %>');"></div>
+									</a>
 
 									<div class="col-sm-6 item-details fill-height">
 										<div class="inner-group" style="position: relative;">
-											<div class="item-name row"><%= product.title %></div>
+											<div class="item-name row"><a href="/products/p/<%= product.id %>"><%= product.title %></a></div>
 											<div class="item-sub-details row">
 												<div class="item-size">Size: <%= variant.title %></div>
 												<div class="item-price">£<span class="num-value"><%= variant.price %></span></div>
