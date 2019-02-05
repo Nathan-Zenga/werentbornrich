@@ -29,7 +29,7 @@ app.use(session({
 
 // Global variables
 app.use(function (req, res, next) {
-	res.locals.url = req.url;
+	res.locals.url = req.originalUrl;
 	res.locals.cart_count = req.session.items ? req.session.items.length : 0;
 	next();
 });

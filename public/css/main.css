@@ -43,7 +43,7 @@ nav .cart {
 	color: rgb(25, 25, 25);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 	nav {
 		top: 100px;
 		left: 150px;
@@ -63,7 +63,7 @@ nav .cart {
 	}
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
 	nav .link-group {
 		position: fixed;
 		width: 100%;
@@ -100,7 +100,7 @@ nav .cart {
 	filter: invert(1) grayscale(1) brightness(50%) sepia(100%) hue-rotate(12deg) saturate(400%) contrast(2);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 	.logo {
 		top: 100px;
 		left: 30px;
@@ -134,6 +134,10 @@ section .heading {
 	padding: 8em 50px 1em;
 }
 
+section.homescreen .heading {
+	margin-bottom: 0
+}
+
 section .heading > div {
 	color: white;
 }
@@ -147,7 +151,7 @@ section .heading .title {
 	letter-spacing: 2px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 	section .heading {
 		margin: 100px 0 2em;
 		padding: 30px 60px;
@@ -156,29 +160,21 @@ section .heading .title {
 
 .homescreen > .inner-body {
     position: relative;
-    height: 100vh;
-    padding: 0 30px;
+	height: calc(100vh - 9em);
 }
 
 .homescreen > .inner-body > .column {
 	background-color: rgb(255, 188, 0);
 }
 
-.homescreen > .inner-body .info-container {
-	height: 30%;
-}
-
 .homescreen > .inner-body .img-container {
-	height: 70%;
+	height: 100%;
 }
 
 .homescreen .main-img {
 	position: absolute;
-	top: 0;
-	bottom: 30px;
-	left: -15px;
-	right: -15px;
-	border-radius: 15px;
+	width: 100%;
+	height: 100%;
 	overflow: hidden;
 }
 
@@ -244,9 +240,10 @@ section .heading .title {
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 	.homescreen > .inner-body {
 		padding: 100px 0;
+		height: 100vh;
 	}
 
 	.homescreen > .inner-body > .column {
@@ -258,6 +255,8 @@ section .heading .title {
 		bottom: -30px;
 		left: 0px;
 		right: 30px;
+		width: auto;
+		height: auto;
 		margin-top: 0;
 		border-radius: 0;
 	}

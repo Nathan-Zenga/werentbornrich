@@ -44,7 +44,7 @@ $(function(){
 	});
 
 	$("nav .link").click(function(e){
-		if (window.innerWidth < 768 && $(this).hasClass("expand")) {
+		if (window.innerWidth < 992 && $(this).hasClass("expand")) {
 			e.preventDefault();
 			$("." + this.id + "-sublist").stop().slideToggle();
 		}
