@@ -21,7 +21,7 @@
 		</div>
 		<div class="col-sm-6 details">
 			<h2 class="product-price">£<%= product.variants[0].price %></h2>
-			<p class="product-description"></p>
+			<p class="product-description"><%- product.body_html %></p>
 			<br>
 			<form class="form-group" data-product-id="<%= product.id %>" style="max-width: 400px">
 				<select class="form-control" id="size" name="size">
@@ -36,12 +36,6 @@
 			<p class="err-msg"></p>
 		</div>
 	</div>
-	<script>
-		let txtElm = document.createElement("textarea");
-		txtElm.innerHTML = "<%= product.body_html.replace(/\n/g, '') %>";
-		let htmlString = txtElm.value;
-		$(".product-description").html(htmlString);
-	</script>
 </section>
 
 <%_ include partials/footer.ejs _%>
