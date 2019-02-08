@@ -127,22 +127,22 @@ nav .cart {
 	font-weight: bold;
 }
 
-section .heading {
+main .heading {
 	position: relative;
 	background-color: rgb(255, 188, 0);
 	margin-bottom: 2em;
 	padding: 8em 50px 1em;
 }
 
-section.homescreen .heading {
+main.homescreen .heading {
 	margin-bottom: 0
 }
 
-section .heading > div {
+main .heading > div {
 	color: white;
 }
 
-section .heading .title {
+main .heading .title {
 	color: rgb(25, 25, 25);
 	font-weight: bold;
 	font-size: 1.5em;
@@ -152,7 +152,7 @@ section .heading .title {
 }
 
 @media (min-width: 992px) {
-	section .heading {
+	main .heading {
 		margin: 100px 0 2em;
 		padding: 30px 60px;
 	}

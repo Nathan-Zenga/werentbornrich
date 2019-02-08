@@ -22,9 +22,6 @@ router.get("/:product", showProducts);
 router.get("/p/:id", (req, res, next) => {
 	Shopify.get("/admin/products/" + req.params.id + ".json", null, function(err, data, headers){
 		if (err || data.errors) {
-			console.log();
-			console.log(JSON.stringify(next));
-			console.log();
 			next()
 		} else {
 			res.render("product-view", {

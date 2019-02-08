@@ -9,9 +9,9 @@ const Shopify = new shopifyAPI({
 	access_token: env.access_token
 });
 
-router.get("/", (req, res) => { res.render("index", {headingTitle: null}) });
-router.get("/our-story", (req, res) => { res.render("about", {headingTitle: "Our Story"}) });
-router.get("/contact", (req, res) => { res.render("contact", {headingTitle: "Contact"}) });
+router.get("/", (req, res) => res.render("index", {headingTitle: null}));
+router.get("/our-story", (req, res) => res.render("about", {headingTitle: "Our Story"}));
+router.get("/contact", (req, res) => res.render("contact", {headingTitle: "Contact"}));
 router.get("/cart", (req, res) => {
 	Shopify.get("/admin/products.json", null, function(err, data, headers){
 		if (err) return err;
