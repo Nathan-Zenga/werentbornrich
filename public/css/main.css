@@ -127,6 +127,10 @@ nav .cart {
 	font-weight: bold;
 }
 
+main:not(.homescreen) > .inner-body {
+	padding: 0 50px 50px;
+}
+
 main .heading {
 	position: relative;
 	background-color: rgb(255, 188, 0);
@@ -218,11 +222,6 @@ main .heading .title {
 	}
 }
 
-.products .thumbs-container {
-	padding: 50px;
-	padding-top: 0;
-}
-
 .products .thumb {
 	margin-bottom: 20px;
 }
@@ -249,10 +248,6 @@ main .heading .title {
 		margin-bottom: 0;
 		padding: 10px;
 	}
-}
-
-.our-story > .inner-body {
-	padding: 0 50px 50px;
 }
 
 .our-story > .inner-body p {
@@ -411,4 +406,8 @@ main .heading .title {
 	.cart-view .item-details {
 		padding: 0 20px;
 	}
+}
+
+.contact form {
+	max-width: 500px;
 }

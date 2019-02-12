@@ -117,9 +117,14 @@ a:hover {
 	color: white;
 }
 
-input[type=submit] {
-	font-weight: bold;
-	background-color: inherit;
+.wbr textarea,
+.wbr input {
 	color: inherit;
 	border-color: inherit;
+	background-color: rgba(255, 188, 0, .1);
+}
+
+.wbr input[type=submit] {
+	background-color: inherit;
+	font-weight: bold;
 }
