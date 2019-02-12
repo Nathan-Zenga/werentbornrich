@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const env = require("../config/env")();
+const nodemailer = require("nodemailer");
 const shopifyAPI = require("shopify-node-api");
+const env = require("../config/env")();
 const Shopify = new shopifyAPI({
 	shop: 'werentbornrichteststore.myspotify.com',
 	shopify_api_key: env.apiKey,
@@ -34,6 +35,43 @@ router.get("*", (req, res) => {
 	res.status(404).render("error", {
 		headingTitle: "Error 404"
 	})
+});
+
+router.post('/send/message', (req, res) => {
+	let empty = false;
+	for (var k in req.body) if (req.body[k] === '') empty = true;
+	if (empty) return res.send({err: "Please fill in the missing field(s)"});
+
+	let isEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(req.body.email);
+	if (!isEmail) return res.send({err: "Please enter a valid email address"});
+
+	let transporter = nodemailer.createTransport({
+		service: 'gmail',
+		port: 465,
+		secure: true,
+		auth: {
+			user: env.authUser,
+			pass: env.authPass
+		},
+		tls: {
+			rejectUnauthorized: true
+		}
+	});
+
+	let mailOptions = {
+		from: `"${req.body.name}" <${req.body.email}>`,
+		to: 'admin@werentbornrich.com',
+		subject: req.body.subject,
+		text: `From ${req.body.name} (${req.body.email}):\n\n${req.body.message}`
+	};
+
+	transporter.sendMail(mailOptions, function(err, info) {
+		if (err) return console.log(err), res.send("Could not send message");
+		console.log("The message was sent!");
+		console.log(info);
+		console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+		res.send('Message sent');
+	});
 });
 
 module.exports = router;

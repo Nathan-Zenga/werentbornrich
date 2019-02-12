@@ -108,4 +108,24 @@ $(function(){
 			$(".total .num-value").text(newTotal.toFixed(2));
 		});
 	});
+
+	$(".contact form #submit").click(function(e) {
+		e.preventDefault();
+		var form = $(this).closest("form");
+		var data = {};
+
+		form.find(".details").each(function(){
+			let name = this.getAttribute("name");
+			data[name] = this.value;
+		});
+
+		$.post("/send/message", data, function(res) {
+			let isErr = res.err !== undefined;
+			res = isErr ? res.err : res;
+			if (isErr === false) $("textarea, input").not(":submit").val("");
+			$(".contact .result").hide().text(res).slideDown().delay(3000).slideUp(function(){
+				$(this).text("").css("display", "")
+			})
+		});
+	});
 });
