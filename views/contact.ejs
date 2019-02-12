@@ -2,7 +2,24 @@
 
 <main class="contact">
 	<%_ include partials/heading.ejs _%>
-	<div class="inner-body"></div>
+	<div class="inner-body">
+		<form class="form-group centreX">
+			<label class="sr-only">Name</label>
+			<input class="form-control details" type="text" name="name" placeholder="Name">
+			<br><br>
+			<label class="sr-only">Email</label>
+			<input class="form-control details" type="email" name="email" placeholder="Email">
+			<br><br>
+			<label class="sr-only">Subject</label>
+			<input class="form-control details" type="text" name="subject" placeholder="Subject">
+			<br><br>
+			<label class="sr-only">Message</label>
+			<textarea class="form-control details" name="message" placeholder="Message"></textarea>
+			<br><br>
+			<label class="sr-only">Send Message</label>
+			<input class="form-control submit" id="submit" type="submit" value="SEND MESSAGE">
+		</form>
+		<div class="result"></div>
 	</div>
 </main>
 
