@@ -35,11 +35,21 @@ router.get("/p/:id", (req, res, next) => {
 router.post("/add-to-cart", extendSession, (req, res) => {
 	if (!req.body.variantID) return res.send("Please select size");
 	if (!req.session.items) req.session.items = [];
+	let itemExists = false;
 
-	req.session.items.push({
-		productID: req.body.productID,
-		variantID: req.body.variantID
+	req.session.items.forEach((item, i) => {
+		if (item.variantID === req.body.variantID) {
+			itemExists = true;
+			req.session.items[i].quantity += 1;
+		}
 	});
+
+	if (!itemExists) {
+		req.session.items.push({
+			variantID: req.body.variantID,
+			quantity: 1
+		});
+	}
 
 	res.send(req.session.items.length.toString());
 });
@@ -54,6 +64,29 @@ router.post("/remove-from-cart", extendSession, (req, res) => {
 
 	req.session.items.splice(index, 1);
 	res.send(req.session.items.length.toString());
+});
+
+router.post("/item-quantity", extendSession, (req, res) => {
+	let new_quantity;
+	let increment = parseInt(req.body.incr);
+	let itemRemoved = false;
+
+	req.session.items.forEach((item, i) => {
+		if (item.variantID === req.body.variantID) {
+			req.session.items[i].quantity += increment;
+			new_quantity = req.session.items[i].quantity;
+			if (req.session.items[i].quantity < 1) {
+				req.session.items.splice(i, 1);
+				itemRemoved = true;
+			}
+		}
+	});
+
+	res.send({
+		new_cart_count: req.session.items.length.toString(),
+		new_quantity,
+		itemRemoved
+	});
 });
 
 module.exports = router;
