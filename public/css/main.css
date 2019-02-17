@@ -361,6 +361,10 @@ main .heading .title {
 	text-align: center;
 }
 
+.cart-view .item-quantity .symbols {
+	cursor: pointer;
+}
+
 .cart-view .item-remove {
 	font-weight: bold;
 	color: rgb(25, 25, 25);
