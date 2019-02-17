@@ -76,7 +76,6 @@ $(function(){
 		var originalText = button.val();
 		let form = button.parent("form");
 		let data = {
-			productID: form.data("product-id"),
 			variantID: form.find("select").val()
 		}
 
@@ -97,15 +96,40 @@ $(function(){
 		e.preventDefault();
 		var item = $(this).closest(".item");
 		var data = {
-			variantID: item.data("variant-id"),
-			productID: item.data("product-id")
+			variantID: item.data("variant-id")
 		};
 
-		$.post("/products/remove-from-cart", data, function(new_count) {
-			$(".cart .count").text(new_count);
-			item.slideUp();
-			var newTotal = parseFloat($(".total .num-value").text()) - parseFloat(item.find(".item-price .num-value").text());
+		$.post("/products/remove-from-cart", data, function(new_cart_count) {
+			$(".cart .count").text(new_cart_count);
+			var total = parseFloat($(".total .num-value").text());
+			var price = parseFloat(item.find(".item-price .num-value").text());
+			var quantity = parseInt(item.find(".item-quantity .number").text());
+			var newTotal = total - (price * quantity);
+			item.slideUp(function() { $(this).remove() });
 			$(".total .num-value").text(newTotal.toFixed(2));
+		});
+	});
+
+	$(".cart-view .item-quantity .symbols").click(function(){
+		var item = $(this).closest(".item");
+		var incr = $(this).hasClass("plus") ? 1 : -1;
+		var data = {
+			variantID: item.attr("id"),
+			incr
+		};
+
+		$.post("/products/item-quantity", data, function(res) {
+			$(".cart .count").text(res.new_cart_count);
+			if (res.itemRemoved) {
+				$(".item#" + item.attr("id")).slideUp(function() { $(this).remove() });
+			} else {
+				item.find(".item-quantity .number").text(res.new_quantity);
+			}
+
+			let totalPrice = parseFloat($(".total .num-value").text());
+			let price = parseFloat(item.find(".item-price .num-value").text());
+			price = incr > 0 ? price : -price;
+			$(".total .num-value").text((totalPrice + price).toFixed(2));
 		});
 	});
 
