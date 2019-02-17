@@ -1,14 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const showProducts = require("../config/show-products-callback");
-const env = require("../config/env")();
-const shopifyAPI = require("shopify-node-api");
-const Shopify = new shopifyAPI({
-	shop: 'werentbornrichteststore.myspotify.com',
-	shopify_api_key: env.apiKey,
-	shopify_shared_secret: env.apiSecret,
-	access_token: env.access_token
-});
+const Shopify = require("../config/shopify-node-api-config")();
 const extendSession = (req, res, next) => {
 	var hour = 3600000;
 	req.session.cookie.expires = new Date(Date.now() + hour);

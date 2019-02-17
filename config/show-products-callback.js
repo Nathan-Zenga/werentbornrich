@@ -1,18 +1,9 @@
 const splitPerRow = require("./split-per-row");
-const shopifyAPI = require("shopify-node-api");
-const env = require("./env")();
+const Shopify = require("./shopify-node-api-config");
 
 // for routes "/products" or "/products/:product"
 module.exports = (req, res, next) => {
-
-	var Shopify = new shopifyAPI({
-		shop: "werentbornrichteststore.myspotify.com",
-		shopify_api_key: env.apiKey,
-		shopify_shared_secret: env.apiSecret,
-		access_token: env.access_token
-	});
-
-	Shopify.get("/admin/products.json", null, function(err, data) {
+	Shopify().get("/admin/products.json", null, function(err, data) {
 		if (err) return res.send(err);
 
 		let typeParam = req.params.product;

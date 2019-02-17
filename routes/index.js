@@ -1,14 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const nodemailer = require("nodemailer");
-const shopifyAPI = require("shopify-node-api");
-const env = require("../config/env")();
-const Shopify = new shopifyAPI({
-	shop: 'werentbornrichteststore.myspotify.com',
-	shopify_api_key: env.apiKey,
-	shopify_shared_secret: env.apiSecret,
-	access_token: env.access_token
-});
+const Shopify = require("../config/shopify-node-api-config")();
 
 router.get("/", (req, res) => res.render("index", {headingTitle: null}));
 router.get("/our-story", (req, res) => res.render("about", {headingTitle: "Our Story"}));
