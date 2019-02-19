@@ -153,22 +153,27 @@ $(function(){
 		});
 	});
 
-	$(".search input").change(function() {
-		var data = { valAutocomplete: this.value };
-		$(".search .search-results").addClass("displayed").html('<div>Loading...</div>');
-		$.post("/products/search", data, function(results){
-			$(".search .search-results").empty();
-			if (results.length) {
-				results.forEach(function(result) {
-					var text = result.text;
-					var href = result.product_id ? "/products/p/" + result.product_id : "/products/" + text + 
-						(text[-1] !== "s" ? "s" : ""); // check if text is already plural
-					$(".search .search-results").append('<div><a href="' + href + '">' + text + '</div>');
-				})
-			} else {
-				$(".search .search-results").removeClass("displayed");
-			}
-		});
+	var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.+ ".split("");
+	chars.push("Backspace");
+
+	$(".search input").keyup(function(e) {
+		if (chars.includes(e.key)) {
+			var data = { valAutocomplete: this.value };
+			$(".search .search-results").addClass("displayed").html("<div>Loading...</div>");
+			$.post("/products/search", data, function(results){
+				$(".search .search-results").empty();
+				if (results.length) {
+					results.forEach(function(result) {
+						var text = result.text;
+						var href = result.product_id ? "/products/p/" + result.product_id : "/products/" + text + 
+							(text[-1] !== "s" ? "s" : ""); // check if text is already plural
+						$(".search .search-results").append("<div><a href='" + href + "'>" + text + "</div>");
+					})
+				} else {
+					$(".search .search-results").removeClass("displayed");
+				}
+			});
+		}
 	});
 
 	$(".search button").click(function(e) {
