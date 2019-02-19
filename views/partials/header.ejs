@@ -39,4 +39,13 @@
 		<a class="col-md-2 cart" href="/cart"><i class="fas fa-shopping-cart"></i> <span class="count"><%= cart_count %></span></a>
 		<a class="menu col-md-1 mb-view-md" id="menu">Menu</a>
 	</nav>
+	<div class="search search-bar search-container live-search <%= url == '/' ? 'mb-view-md' : '' %>">
+		<form>
+			<input class="form-control" type="text" name="search-input" placeholder="Search store">
+			<button>
+				<i class="glyphicon glyphicon-search" style="top: 3px"></i>
+			</button>
+		</form>
+		<div class="search-results"></div>
+	</div>
 	<!-- <div id="toTop"><i class="fas fa-angle-up animate up"></i></div> -->

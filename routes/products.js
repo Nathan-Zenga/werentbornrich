@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const showProducts = require("../config/show-products-callback");
 const Shopify = require("../config/shopify-node-api-config")();
+const splitPerRow = require("../config/split-per-row");
 const extendSession = (req, res, next) => {
 	var hour = 3600000;
 	req.session.cookie.expires = new Date(Date.now() + hour);
@@ -79,6 +80,45 @@ router.post("/item-quantity", extendSession, (req, res) => {
 		new_cart_count: req.session.items.length.toString(),
 		new_quantity,
 		itemRemoved
+	});
+});
+
+router.post("/search", (req, res) => {
+	Shopify.get("/admin/products.json", null, function(err, data) {
+		var valAutocomplete = req.body.valAutocomplete;
+		var valFinal = req.body.valFinal;
+		var results = [];
+		if (valAutocomplete) {
+			data.products.forEach(product => {
+				let regex = RegExp(valAutocomplete, "i");
+
+				if (regex.test(product.product_type)) {
+					results.push({
+						text: product.product_type
+					})
+				}
+				if (regex.test(product.title)) {
+					results.push({
+						text: product.title,
+						product_id: product.id
+					})
+				}
+			});
+			res.send(results);
+		} else if (valFinal) {
+			data.products.forEach(product => {
+				let regex = RegExp(valFinal, "i");
+				if (regex.test(product.product_type) || regex.test(product.title)) {
+					results.push(product)
+				}
+			});
+
+			req.session.searchResults = results;
+			req.session.input = valFinal;
+			res.end("/products");
+		} else {
+			res.end();
+		}
 	});
 });
 
