@@ -85,6 +85,7 @@ router.post("/item-quantity", extendSession, (req, res) => {
 
 router.post("/search", (req, res) => {
 	Shopify.get("/admin/products.json", null, function(err, data) {
+		if (err) return err;
 		var valAutocomplete = req.body.valAutocomplete;
 		var valFinal = req.body.valFinal;
 		var results = [];
