@@ -3,14 +3,18 @@
 @import url('https://fonts.googleapis.com/css?family=Questrial|Overpass+Mono|Source+Sans+Pro|Oswald');
 
 html, body {
-	color: rgb(255, 188, 0);
+	color: rgb(25, 25, 25);
 	font-family: 'Questrial', 'Overpass Mono', sans-serif;
 	font-feature-settings: "liga" 0;
-	background-color: rgb(25, 25, 25);
+	background-color: white;
 }
 
 .font-2 {
 	font-family: 'Oswald';
+}
+
+.font-color-2 {
+	color: rgb(255, 188, 0);
 }
 
 h1 {
@@ -117,14 +121,25 @@ a:hover {
 	color: white;
 }
 
+.wbr .form-control:focus {
+	border-color: inherit;
+}
+
 .wbr textarea,
 .wbr input {
 	color: inherit;
-	border-color: inherit;
-	background-color: rgba(255, 188, 0, .1);
+	border: none;
 }
 
 .wbr input[type=submit] {
-	background-color: inherit;
+	background-color: rgb(25, 25, 25);
+	color: rgb(255, 188, 0);
 	font-weight: bold;
+}
+
+.contact .details {
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	border-color: inherit;
+	box-shadow: none;
 }

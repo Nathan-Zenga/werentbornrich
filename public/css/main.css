@@ -35,6 +35,14 @@
 	padding-top: 0;
 	padding-bottom: 0;
 	background-color: rgb(25,25,25);
+	border: solid rgba(255, 188, 0);
+	border-width: 0 0 1px 0;
+}
+
+@media (min-width: 992px) {
+	.search form input {
+		border: none;
+	}
 }
 
 .search form input:focus {
@@ -68,7 +76,7 @@
 }
 
 .search .search-results > div {
-	padding: 2px 12px;
+	padding: 5px 12px;
 }
 
 nav {
@@ -84,7 +92,7 @@ nav {
 
 nav .menu {
 	padding: 0 0 20px 20px;
-	color: rgb(25, 25, 25);
+	color: rgb(255, 188, 0);
 }
 
 nav .link {
@@ -130,6 +138,7 @@ nav .cart {
 		left: 0;
 		text-align: center;
 		padding: 20px 0;
+		color: rgb(255, 188, 0);
 		background-color: rgb(25, 25, 25);
 		z-index: 2;
 	}
@@ -150,7 +159,6 @@ nav .cart {
 	position: relative;
 	top: 50%;
 	width: 100%;
-	padding: 11px;
 	transform: translateY(-50%);
 	color: white;
 	font-weight: bold;
@@ -167,6 +175,7 @@ nav .cart {
 		height: 100px;
 		-webkit-transform: translateY(-65%);
 		transform: translateY(-65%);
+		box-shadow: 0 0 20px white;
 	}
 
 	.logo img {
@@ -192,7 +201,7 @@ main:not(.homescreen) > .inner-body {
 
 main .heading {
 	position: relative;
-	background-color: rgb(255, 188, 0);
+	background-color: rgb(25, 25, 25);
 	margin-bottom: 2em;
 	padding: 8em 50px 1em;
 }
@@ -201,12 +210,7 @@ main.homescreen .heading {
 	margin-bottom: 0
 }
 
-main .heading > div {
-	color: white;
-}
-
 main .heading .title {
-	color: rgb(25, 25, 25);
 	font-weight: bold;
 	font-size: 1.5em;
 	text-align: right;
@@ -227,7 +231,7 @@ main .heading .title {
 }
 
 .homescreen > .inner-body > .column {
-	background-color: rgb(255, 188, 0);
+	background-color: rgb(25, 25, 25);
 }
 
 .homescreen > .inner-body .img-container {
