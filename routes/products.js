@@ -141,7 +141,10 @@ router.post("/search/results", (req, res) => {
 				products: splitPerRow(results, 3)
 			})
 		} else {
-			res.end();
+			res.render("products", {
+				headingTitle: "No Results",
+				products: []
+			})
 		}
 	});
 });
