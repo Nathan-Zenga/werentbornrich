@@ -177,12 +177,4 @@ $(function(){
 			});
 		}
 	});
-
-	$(".search button").click(function(e) {
-		e.preventDefault();
-		var data = { valFinal: $(".search input").val() };
-		$.post("/products/search/results", data, function(page){
-			if (page) location.pathname = page;
-		});
-	});
 });
