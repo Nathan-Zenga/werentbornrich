@@ -107,7 +107,7 @@ nav .sublist {
 }
 
 nav .cart {
-	color: rgb(25, 25, 25);
+	color: rgb(255, 188, 0);
 }
 
 @media (min-width: 992px) {
@@ -375,7 +375,7 @@ main .heading .title {
 	margin-bottom: 20px;
 	overflow: hidden;
 	border-radius: 7px;
-	background-color: rgba(255,255,255,0.1);
+	background-color: rgba(25,25,25,0.1);
 }
 
 .cart-view .item .item-img {
@@ -423,8 +423,7 @@ main .heading .title {
 
 .cart-view .item-remove {
 	font-weight: bold;
-	color: rgb(25, 25, 25);
-	background-color: rgb(255, 188, 0);
+	background-color: rgb(25, 25, 25);
 	text-align: center;
 	cursor: pointer;
 	border-radius: 7px;
@@ -442,12 +441,6 @@ main .heading .title {
 
 	.cart-view .item .item-img {
 		height: 100%;
-	}
-
-	.cart-view .item-details .inner-group {
-		position: relative;
-		top: 50%;
-		transform: translateY(-50%);
 	}
 
 	.cart-view .item-name,

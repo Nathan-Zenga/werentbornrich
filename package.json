@@ -21,6 +21,7 @@
     "node-fetch": "^2.3.0",
     "nodemailer": "^4.6.8",
     "nonce": "^1.0.4",
+    "receipt": "^1.4.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "shopify-buy": "^2.0.1",

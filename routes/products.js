@@ -39,7 +39,7 @@ router.post("/add-to-cart", extendSession, (req, res) => {
 	});
 
 	if (!itemExists) {
-		req.session.items.push({
+		req.session.items.unshift({
 			variantID: req.body.variantID,
 			quantity: 1
 		});
