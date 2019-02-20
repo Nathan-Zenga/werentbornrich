@@ -1,5 +1,6 @@
 $(function(){
-	var randomRGBA = (a) => {
+	var capitalize = str => { return str[0].toUpperCase() + str.slice(1).toLowerCase() }
+	var randomRGBA = a => {
 		a = a || 1;
 		var arr = [];
 
@@ -157,16 +158,17 @@ $(function(){
 	chars.push("Backspace");
 
 	$(".search input").keyup(function(e) {
-		if (chars.includes(e.key)) {
+		if (chars.includes(e.key) && !e.ctrlKey && !e.shiftKey) {
 			var data = { valAutocomplete: this.value };
-			$(".search .search-results").addClass("displayed").html("<div>Loading...</div>");
-			$.post("/products/search", data, function(results){
-				$(".search .search-results").empty();
+			$(".search .search-results").html("<div>Loading...</div>");
+			$.post("/products/search/autocomplete", data, function(results){
+				$(".search .search-results").addClass("displayed").empty();
 				if (results.length) {
 					results.forEach(function(result) {
 						var text = result.text;
 						var href = result.product_id ? "/products/p/" + result.product_id : "/products/" + text + 
 							(text[-1] !== "s" ? "s" : ""); // check if text is already plural
+						text = result.category ? "<i>" + capitalize(text) + " (Category)</i>" : text;
 						$(".search .search-results").append("<div><a href='" + href + "'>" + text + "</div>");
 					})
 				} else {
@@ -179,7 +181,7 @@ $(function(){
 	$(".search button").click(function(e) {
 		e.preventDefault();
 		var data = { valFinal: $(".search input").val() };
-		$.post("/products/search", data, function(page){
+		$.post("/products/search/results", data, function(page){
 			if (page) location.pathname = page;
 		});
 	});
