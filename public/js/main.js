@@ -168,7 +168,7 @@ $(function(){
 						var text = result.text;
 						var href = result.product_id ? "/products/p/" + result.product_id : "/products/" + text + 
 							(text[-1] !== "s" ? "s" : ""); // check if text is already plural
-						text = result.category ? "<i>" + capitalize(text) + " (Category)</i>" : text;
+						text = result.category ? "<i>" + capitalize(text) + " <small>- Category</small></i>" : text;
 						$(".search .search-results").append("<div><a href='" + href + "'>" + text + "</div>");
 					})
 				} else {
