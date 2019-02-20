@@ -83,11 +83,10 @@ router.post("/item-quantity", extendSession, (req, res) => {
 	});
 });
 
-router.post("/search", (req, res) => {
+router.post("/search/autocomplete", (req, res) => {
 	Shopify.get("/admin/products.json", null, function(err, data) {
 		if (err) return err;
 		var valAutocomplete = req.body.valAutocomplete;
-		var valFinal = req.body.valFinal;
 		var results = [];
 		if (valAutocomplete) {
 			data.products.forEach(product => {
@@ -95,7 +94,8 @@ router.post("/search", (req, res) => {
 
 				if (regex.test(product.product_type)) {
 					results.push({
-						text: product.product_type
+						text: product.product_type,
+						category: true
 					})
 				}
 				if (regex.test(product.title)) {
@@ -117,7 +117,18 @@ router.post("/search", (req, res) => {
 			}
 
 			res.send(results);
-		} else if (valFinal) {
+		} else {
+			res.end();
+		}
+	});
+});
+
+router.post("/search/results", (req, res) => {
+	Shopify.get("/admin/products.json", null, function(err, data) {
+		if (err) return err;
+		var valFinal = req.body.valFinal;
+		var results = [];
+		if (valFinal) {
 			data.products.forEach(product => {
 				let regex = RegExp(valFinal, "i");
 				if (regex.test(product.product_type) || regex.test(product.title)) {
