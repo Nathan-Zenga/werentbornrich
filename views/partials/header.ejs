@@ -39,7 +39,7 @@
 		<a class="col-md-2 cart" href="/cart"><i class="fas fa-shopping-cart"></i> <span class="count"><%= cart_count %></span></a>
 		<a class="menu col-md-1 mb-view-md" id="menu">Menu</a>
 	</nav>
-	<div class="search search-bar search-container live-search <%= url == '/' ? 'mb-view-md' : '' %>">
+	<div class="search search-bar search-container live-search <%= url == '/' ? 'mb-view-md' : '' %> font-color-2">
 		<form method="POST" action="/products/search/results">
 			<input class="form-control" type="text" name="input" placeholder="Search store">
 			<button>
