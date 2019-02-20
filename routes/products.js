@@ -8,7 +8,7 @@ const extendSession = (req, res, next) => {
 	req.session.cookie.expires = new Date(Date.now() + hour);
 	req.session.cookie.maxAge = hour;
 	next();
-}
+};
 
 router.get("/", showProducts);
 router.get("/:product", showProducts);
@@ -105,6 +105,17 @@ router.post("/search", (req, res) => {
 					})
 				}
 			});
+
+			// reserving unique values only
+			for(var i = 0; i < results.length; i++) {
+				let count = 0;
+				let target = results[i].text;
+				for(var j = 0; j < results.length; j++) {
+					if (results[j].text === target) count += 1;
+				}
+				if (count > 1) results.splice(i, 1);
+			}
+
 			res.send(results);
 		} else if (valFinal) {
 			data.products.forEach(product => {
