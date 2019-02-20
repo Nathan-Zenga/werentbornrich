@@ -126,19 +126,20 @@ router.post("/search/autocomplete", (req, res) => {
 router.post("/search/results", (req, res) => {
 	Shopify.get("/admin/products.json", null, function(err, data) {
 		if (err) return err;
-		var valFinal = req.body.valFinal;
+		var input = req.body.input;
 		var results = [];
-		if (valFinal) {
+		if (input) {
 			data.products.forEach(product => {
-				let regex = RegExp(valFinal, "i");
+				let regex = RegExp(input, "i");
 				if (regex.test(product.product_type) || regex.test(product.title)) {
 					results.push(product)
 				}
 			});
 
-			req.session.searchResults = results;
-			req.session.input = valFinal;
-			res.end("/products");
+			res.render("products", {
+				headingTitle: "Search Results: " + input,
+				products: splitPerRow(results, 3)
+			})
 		} else {
 			res.end();
 		}
