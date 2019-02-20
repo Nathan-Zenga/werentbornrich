@@ -40,8 +40,8 @@
 		<a class="menu col-md-1 mb-view-md" id="menu">Menu</a>
 	</nav>
 	<div class="search search-bar search-container live-search <%= url == '/' ? 'mb-view-md' : '' %>">
-		<form>
-			<input class="form-control" type="text" name="search-input" placeholder="Search store">
+		<form method="POST" action="/products/search/results">
+			<input class="form-control" type="text" name="input" placeholder="Search store">
 			<button>
 				<i class="glyphicon glyphicon-search" style="top: 3px"></i>
 			</button>
