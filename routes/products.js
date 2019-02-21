@@ -123,21 +123,21 @@ router.post("/search/autocomplete", (req, res) => {
 	});
 });
 
-router.post("/search/results", (req, res) => {
+router.get("/search/results", (req, res) => {
 	Shopify.get("/admin/products.json", null, function(err, data) {
 		if (err) return err;
-		var input = req.body.input;
+		var query = req.query.q.replace(/[+]/g, " ");
 		var results = [];
-		if (input) {
+		if (query) {
 			data.products.forEach(product => {
-				let regex = RegExp(input, "i");
+				let regex = RegExp(query, "i");
 				if (regex.test(product.product_type) || regex.test(product.title)) {
 					results.push(product)
 				}
 			});
 
 			res.render("products", {
-				headingTitle: "Search Results: " + input,
+				headingTitle: "Search Results: " + query,
 				products: splitPerRow(results, 3)
 			})
 		} else {
