@@ -134,6 +134,13 @@ $(function(){
 		});
 	});
 
+	$(".cart-view .item-remove, .cart-view .item-quantity .symbols").click(function(){
+		$(".stripe-button-el").hide();
+		$(".update.refresh").show();
+	});
+
+	$(".update.refresh").click(function() { location.reload(); });
+
 	$(".contact form #submit").click(function(e) {
 		e.preventDefault();
 		var form = $(this).closest("form");
@@ -154,12 +161,13 @@ $(function(){
 		});
 	});
 
-	var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.+ ".split("");
+	var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789- ".split("");
 	chars.push("Backspace");
+	chars.push("Delete");
 
 	$(".search input").keyup(function(e) {
 		if (chars.includes(e.key) && !e.ctrlKey && !e.shiftKey) {
-			var data = { valAutocomplete: this.value };
+			var data = { inputValue: this.value };
 			$(".search .search-results").html("<div>Loading...</div>");
 			$.post("/products/search/autocomplete", data, function(results){
 				$(".search .search-results").addClass("displayed").empty();
