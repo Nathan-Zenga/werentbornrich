@@ -25,7 +25,8 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "shopify-buy": "^2.0.1",
-    "shopify-node-api": "^1.10.0"
+    "shopify-node-api": "^1.10.0",
+    "stripe": "^6.25.1"
   },
   "engines": {
     "node": "*",
