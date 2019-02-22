@@ -126,20 +126,16 @@ a:hover {
 }
 
 .wbr textarea,
-.wbr input {
+.wbr input,
+.wbr button {
 	color: inherit;
 	border: none;
 }
 
-.wbr input[type=submit] {
+.wbr input[type=submit],
+.wbr button {
 	background-color: rgb(25, 25, 25);
 	color: rgb(255, 188, 0);
 	font-weight: bold;
-}
-
-.contact .details {
-	border-style: solid;
-	border-width: 0 0 1px 0;
-	border-color: inherit;
-	box-shadow: none;
+	border-radius: 4px;
 }
