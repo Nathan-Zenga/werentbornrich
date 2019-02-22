@@ -12,7 +12,7 @@ router.get("/cart", (req, res) => {
 		res.render("cart", {
 			headingTitle: "Cart",
 			products: data.products,
-			cart_items: req.session.items ? req.session.items.reverse() : []
+			cart_items: req.session.items ? req.session.items : []
 		});
 	});
 });

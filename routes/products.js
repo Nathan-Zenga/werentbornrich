@@ -86,23 +86,45 @@ router.post("/item-quantity", extendSession, (req, res) => {
 router.post("/search/autocomplete", (req, res) => {
 	Shopify.get("/admin/products.json", null, function(err, data) {
 		if (err) return err;
-		var valAutocomplete = req.body.valAutocomplete;
+		var inputValue = req.body.inputValue;
 		var results = [];
-		if (valAutocomplete) {
+		if (inputValue) {
 			data.products.forEach(product => {
-				let regex = RegExp(valAutocomplete, "i");
+				let value = inputValue.toLowerCase().replace(/[ -]/g, "");
+				let type = product.product_type.toLowerCase().replace(/[ -]/g, "");
+				let title = product.title.toLowerCase().replace(/[ -]/g, "");
+				let regex = RegExp(value, "i");
+				let titleArr = product.title.split(" ")
+				let foundTitle = false;
+				let lastInitialIndex;
 
-				if (regex.test(product.product_type)) {
+				if (value[0] == type[0] && regex.test(type)) {
 					results.push({
 						text: product.product_type,
 						category: true
 					})
 				}
-				if (regex.test(product.title)) {
-					results.push({
-						text: product.title,
-						product_id: product.id
-					})
+
+				titleArr.forEach(word => {
+					word = word.toLowerCase().replace(/[ -]/g, "");
+					if (value[0] == word[0] && word.includes(value)) {
+						foundTitle = true;
+						results.push({
+							text: product.title,
+							product_id: product.id
+						});
+					} else if (value[0] == word[0]) {
+						lastInitialIndex = title.indexOf(word);
+					}
+				});
+
+				if (!foundTitle) {
+					if (value[0] == title[lastInitialIndex] && (title.includes(value) || inputValue.toLowerCase().replace(/-/g, "").includes(product.title.toLowerCase().replace(/-/g, "")))) {
+						results.push({
+							text: product.title,
+							product_id: product.id
+						})
+					}
 				}
 			});
 
