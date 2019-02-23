@@ -53,21 +53,24 @@
 			<%_ }); _%>
 
 			<div class="total">Total: £<span class="num-value" style="font-size: 1.5em"><%= total.toFixed(2) %></span></div>
-			<div class="checkout" style="text-align: center;">
-				<button class="update refresh" style="display: none; padding: 10px 15px; font-size: 1.5em">Update</button>
-				<form action="/charge" method="POST">
-					<script class="stripe-button"
-						src="https://checkout.stripe.com/checkout.js"
-						data-key="pk_test_qFIONRE2Do4UTJWvt5XRdJNq"
-						data-amount="<%= total * 100 %>"
-						data-currency="gbp"
-						data-name="WBR Purchase"
-						data-image="/img/logo1.png"
-						data-locale="auto">
-					</script>
-					<input type="text" id="amount" name="amount" value="<%= total * 100 %>" style="display: none">
-				</form>
-			</div>
+			<%_ if (total) { _%>
+				<div class="checkout" style="text-align: center;">
+					<button class="update refresh" style="display: none; padding: 10px 15px; font-size: 1.5em">Update</button>
+					<form action="/checkout/charge" method="POST">
+						<script class="stripe-button"
+							src="https://checkout.stripe.com/checkout.js"
+							data-key="<%= pk %>"
+							data-label="Checkout"
+							data-amount="<%= total * 100 %>"
+							data-currency="gbp"
+							data-name="WBR Purchase"
+							data-image="/img/logo1.png"
+							data-locale="auto">
+						</script>
+						<input type="text" id="amount" name="amount" value="<%= total * 100 %>" style="display: none">
+					</form>
+				</div>
+			<%_ } _%>
 		</div>
 	</div>
 </main>
