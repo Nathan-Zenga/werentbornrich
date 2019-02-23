@@ -468,6 +468,13 @@ main .heading .title {
 		height: 100%;
 	}
 
+	.cart-view .item-details .inner-group {
+		position: relative;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+
 	.cart-view .item-name,
 	.cart-view .item-sub-details {
 		text-align: left;
