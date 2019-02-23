@@ -36,6 +36,7 @@ app.use(function (req, res, next) {
 
 app.use('/products', require('./routes/products'));
 app.use('/shopify', require('./routes/shopify-install'));
+app.use('/checkout', require('./routes/checkout'));
 app.use('/', require('./routes/index'));
 
 const port = process.env.PORT;
