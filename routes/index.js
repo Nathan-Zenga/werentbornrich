@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const nodemailer = require("nodemailer");
 const Shopify = require("../config/shopify-node-api-config")();
+const env = require("../config/env")();
 
 router.get("/", (req, res) => res.render("index", {headingTitle: null}));
 router.get("/our-story", (req, res) => res.render("about", {headingTitle: "Our Story"}));
@@ -12,7 +13,8 @@ router.get("/cart", (req, res) => {
 		res.render("cart", {
 			headingTitle: "Cart",
 			products: data.products,
-			cart_items: req.session.items ? req.session.items : []
+			cart_items: req.session.items ? req.session.items : [],
+			pk: env.stripePK
 		});
 	});
 });

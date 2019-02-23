@@ -9,7 +9,9 @@ module.exports = function() {
 		apiSecret: process.env.SHOPIFY_API_SECRET,
 		access_token: process.env.SHOPIFY_ACCESS_TOKEN,
 		authUser: process.env.NODEMAILER_AUTH_EMAIL,
-		authPass: process.env.NODEMAILER_AUTH_PASS
+		authPass: process.env.NODEMAILER_AUTH_PASS,
+		stripePK: process.env.STRIPE_PUBLIC_KEY,
+		stripeSK: process.env.STRIPE_PRIVATE_KEY
 	});
 
 	const variables = {
@@ -17,7 +19,9 @@ module.exports = function() {
 		apiSecret: process.env.SHOPIFY_API_SECRET,
 		access_token: process.env.SHOPIFY_ACCESS_TOKEN,
 		authUser: process.env.NODEMAILER_AUTH_EMAIL,
-		authPass: process.env.NODEMAILER_AUTH_PASS
+		authPass: process.env.NODEMAILER_AUTH_PASS,
+		stripePK: process.env.STRIPE_PUBLIC_KEY,
+		stripeSK: process.env.STRIPE_PRIVATE_KEY
 	};
 
 	return variables
