@@ -87,10 +87,10 @@ router.post("/search/autocomplete", (req, res) => {
 	Shopify.get("/admin/products.json", null, function(err, data) {
 		if (err) return err;
 		var inputValue = req.body.inputValue;
+		var value = inputValue.toLowerCase().replace(/[ -]/g, "");
 		var results = [];
-		if (inputValue) {
+		if (value) {
 			data.products.forEach(product => {
-				let value = inputValue.toLowerCase().replace(/[ -]/g, "");
 				let type = product.product_type.toLowerCase().replace(/[ -]/g, "");
 				let title = product.title.toLowerCase().replace(/[ -]/g, "");
 				let regex = RegExp(value, "i");
@@ -150,7 +150,7 @@ router.get("/search/results", (req, res) => {
 		if (err) return err;
 		var query = req.query.q.replace(/[+]/g, " ");
 		var results = [];
-		if (query) {
+		if (query && query.replace(/ /g, "")) {
 			data.products.forEach(product => {
 				let regex = RegExp(query, "i");
 				if (regex.test(product.product_type) || regex.test(product.title)) {
