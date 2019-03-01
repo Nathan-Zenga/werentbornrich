@@ -39,7 +39,7 @@ $(function(){
 	});
 
 	$(".close-menu").click(function(){
-		$("nav .link-group").slideUp(null, "easeInExpo", function() {
+		$("[class*='-sublist'], nav .link-group").stop().slideUp(null, "easeInExpo", function() {
 			$(this).css("display", "");
 		});
 	});
