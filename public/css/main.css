@@ -99,7 +99,7 @@ header .cart {
 
 	header .cart {
 		top: 50%;
-		left: 205px;
+		left: 175px;
 		right: auto;
 		-webkit-transform: translateY(12px);
 		transform: translateY(12px);
@@ -107,11 +107,15 @@ header .cart {
 
 	.search {
 		top: 50%;
-		left: 260px;
+		left: 230px;
 		right: auto;
 		width: 200px;
 		-webkit-transform: translateY(11px);
 		transform: translateY(11px);
+	}
+
+	.search form input {
+		padding-bottom: 0;
 	}
 }
 
@@ -145,7 +149,7 @@ nav .sublist {
 	nav {
 		position: absolute;
 		top: 27px;
-		left: 155px;
+		left: 125px;
 		right: auto;
 		width: 350px;
 		padding: 0;
@@ -197,7 +201,7 @@ nav .sublist {
 @media (min-width: 992px) {
 	.logo {
 		top: 0;
-		left: 30px;
+		left: 0;
 		width: 100px;
 		height: 100px;
 		box-shadow: 0 0 20px white;
@@ -229,6 +233,7 @@ main .heading {
 	background-color: rgb(25, 25, 25);
 	margin-bottom: 2em;
 	padding: 8em 30px 1em;
+	overflow: hidden;
 }
 
 main.homescreen .heading {
