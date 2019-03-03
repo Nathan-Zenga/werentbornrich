@@ -20,6 +20,7 @@ module.exports = (req, res, next) => {
 
 		if (headingTitle) {
 			res.render("products", {
+				pagename: "products",
 				headingTitle: headingTitle,
 				products: splitPerRow(arr, 3)
 			})

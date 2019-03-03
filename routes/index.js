@@ -4,13 +4,14 @@ const nodemailer = require("nodemailer");
 const Shopify = require("../config/shopify-node-api-config")();
 const env = require("../config/env")();
 
-router.get("/", (req, res) => res.render("index", {headingTitle: null}));
-router.get("/our-story", (req, res) => res.render("about", {headingTitle: "Our Story"}));
-router.get("/contact", (req, res) => res.render("contact", {headingTitle: "Contact"}));
+router.get("/", (req, res) => res.render("index", {pagename: "homescreen index", headingTitle: null}));
+router.get("/our-story", (req, res) => res.render("about", {pagename: "our-story", headingTitle: "Our Story"}));
+router.get("/contact", (req, res) => res.render("contact", {pagename: "contact", headingTitle: "Contact"}));
 router.get("/cart", (req, res) => {
 	Shopify.get("/admin/products.json", null, function(err, data, headers){
 		if (err) return err;
 		res.render("cart", {
+			pagename: "cart-view",
 			headingTitle: "Cart",
 			products: data.products,
 			cart_items: req.session.items ? req.session.items : [],
@@ -28,6 +29,7 @@ router.get("/list", (req, res) => {
 
 router.get("*", (req, res) => {
 	res.status(404).render("error", {
+		pagename: "error",
 		headingTitle: "Error 404"
 	})
 });

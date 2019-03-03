@@ -19,6 +19,7 @@ router.get("/p/:id", (req, res, next) => {
 			next()
 		} else {
 			res.render("product-view", {
+				pagename: "product-view",
 				headingTitle: data.product.title,
 				product: data.product
 			})
@@ -159,11 +160,13 @@ router.get("/search/results", (req, res) => {
 			});
 
 			res.render("products", {
+				pagename: "products",
 				headingTitle: "Search Results: " + query,
 				products: splitPerRow(results, 3)
 			})
 		} else {
 			res.render("products", {
+				pagename: "products",
 				headingTitle: "No Results",
 				products: []
 			})
