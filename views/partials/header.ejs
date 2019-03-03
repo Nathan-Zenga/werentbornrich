@@ -18,7 +18,7 @@
 	<script src="/js/main.js"></script>
 </head>
 
-<body>
+<body class="<%= pagename %>">
 	<header>
 		<div class="container">
 			<div class="inner-header">
@@ -40,7 +40,11 @@
 					</div>
 					<a class="menu col-md-1 mb-view-md" id="menu">Menu</a>
 				</nav>
-				<a class="cart" href="/cart"><i class="fas fa-shopping-cart"></i> <span class="count"><%= cart_count %></span></a>
+				<a class="cart" href="/cart">
+					<div class="centre">
+						<i class="fas fa-shopping-cart"></i> <span class="count"><%= cart_count %></span>
+					</div>
+				</a>
 				<div class="search search-bar search-container live-search font-color-2">
 					<form method="GET" action="/products/search/results">
 						<input class="form-control" type="text" name="q" placeholder="Search store...">
