@@ -34,13 +34,18 @@ $(function(){
 		return this;
 	}
 
+	var linkGroupOpen = false;
+
 	$(".menu").click(function(){
-		$("nav .link-group").slideDown(null, "easeOutExpo");
+		$("nav .link-group").slideDown(null, "easeOutExpo", function() {
+			linkGroupOpen = true;
+		});
 	});
 
 	$(".close-menu").click(function(){
 		$("[class*='-sublist'], nav .link-group").stop().slideUp(null, "easeInExpo", function() {
 			$(this).css("display", "");
+			linkGroupOpen = false;
 		});
 	});
 
@@ -49,7 +54,11 @@ $(function(){
 			e.preventDefault();
 			$("." + this.id + "-sublist").stop().slideToggle();
 		}
-	})
+	});
+
+	$("main").click(function() {
+		if (window.innerWidth < 992 && linkGroupOpen) $(".close-menu").click();
+	});
 
 	// bg auto-playing slideshow
 	$("#index-reel > div:gt(0)").hide();
