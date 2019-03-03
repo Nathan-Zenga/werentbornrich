@@ -28,10 +28,17 @@ header .container {
 
 header .cart {
 	position: absolute;
-	color: rgb(255, 188, 0);
-	right: 110px;
-	top: 20px;
+	right: 0;
+	top: 105px;
+	background-color: rgb(255, 188, 0);
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
 	transition-property: opacity;
+}
+
+header .cart > div {
+	text-align: center;
 }
 
 .search {
@@ -49,7 +56,6 @@ header .cart {
 	background-color: rgb(25,25,25);
 	border: solid rgba(255, 188, 0);
 	border-width: 0 0 1px 0;
-	border-radius: 0;
 }
 
 .search form input:focus {
@@ -98,24 +104,36 @@ header .cart {
 	}
 
 	header .cart {
-		top: 50%;
-		left: 175px;
+		top: auto;
+		bottom: 0;
+		right: 0;
+	}
+
+	.homescreen header .cart {
 		right: auto;
-		-webkit-transform: translateY(12px);
-		transform: translateY(12px);
+		left: 385px;
 	}
 
 	.search {
-		top: 50%;
-		left: 230px;
-		right: auto;
+		top: 21px;
+		right: 0;
 		width: 200px;
-		-webkit-transform: translateY(11px);
-		transform: translateY(11px);
 	}
 
 	.search form input {
 		padding-bottom: 0;
+		border-width: 0;
+	}
+
+	.homescreen header .search {
+		top: 64px;
+		right: auto;
+		left: 125px;
+	}
+
+	.homescreen header .search form input {
+		padding-bottom: 6px;
+		border-width: 0 0 1px 0;
 	}
 }
 
@@ -224,7 +242,7 @@ nav .sublist {
 	font-weight: bold;
 }
 
-main:not(.homescreen) > .inner-body {
+body:not(.homescreen) main > .inner-body {
 	padding: 0 50px 50px;
 }
 
@@ -236,14 +254,13 @@ main .heading {
 	overflow: hidden;
 }
 
-main.homescreen .heading {
+.homescreen main .heading {
 	margin-bottom: 0
 }
 
 main .heading .title {
 	font-weight: bold;
 	font-size: 1.5em;
-	text-align: right;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 }
@@ -253,18 +270,22 @@ main .heading .title {
 		margin: 100px 0 2em;
 		padding: 30px 60px;
 	}
+
+	main .heading .title {
+		text-align: center;
+	}
 }
 
-.homescreen > .inner-body {
+.homescreen .inner-body {
     position: relative;
 	height: calc(100vh - 9em);
 }
 
-.homescreen > .inner-body > .column {
+.homescreen .inner-body > .column {
 	background-color: rgb(25, 25, 25);
 }
 
-.homescreen > .inner-body .img-container {
+.homescreen .inner-body .img-container {
 	height: 100%;
 }
 
@@ -285,7 +306,7 @@ main .heading .title {
 }
 
 .homescreen .text-content.overlay {
-	background-color: rgba(25, 25, 25, .5);
+	background-color: rgba(255, 255, 255, .5);
 	font-weight: bold;
 	width: 100%;
 	height: 100%;
@@ -312,12 +333,12 @@ main .heading .title {
 }
 
 @media (min-width: 992px) {
-	.homescreen > .inner-body {
+	.homescreen .inner-body {
 		padding: 100px 0;
 		height: 100vh;
 	}
 
-	.homescreen > .inner-body > .column {
+	.homescreen .inner-body > .column {
 		height: 100%;
 	}
 
